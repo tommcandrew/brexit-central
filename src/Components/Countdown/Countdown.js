@@ -76,16 +76,31 @@ class Countdown extends React.Component {
 
         return (
             <div id="countdown-container">
+
                 <div id="countdown-display">
-                    <div id='days' className='clock-section'>{this.state.brexitDays}</div>
-                    <div id='hours' className='clock-section'>{this.state.brexitHours}</div>
-                    <div id='mins' className='clock-section'>{this.state.brexitMins}</div>
-                    <div id='secs' className='clock-section'>{this.state.brexitSecs}</div>
-                    <div id="days-label" className="label">DAYS</div>
-                    <div id="hours-label" className="label">HOURS</div>
-                    <div id="mins-label" className="label">MINS</div>
-                    <div id="secs-label" className="label">SECS</div>
+
+                    <div id="days-container">
+                        <div id='days' className='clock-section'>{this.state.brexitDays}</div>
+                        <div id="days-label" className="label">DAYS</div>
+                    </div>
+
+                    <div id="hours-container">
+                        <div id='hours' className='clock-section'>{this.state.brexitHours}</div>
+                        <div id="hours-label" className="label">HOURS</div>
+                    </div>
+
+                    <div id="mins-container">
+                        <div id='mins' className='clock-section'>{this.state.brexitMins}</div>
+                        <div id="mins-label" className="label">MINS</div>
+                    </div>
+
+                    <div id="secs-container">
+                        <div id='secs' className='clock-section'>{this.state.brexitSecs}</div>
+                        <div id="secs-label" className="label">SECS</div>
+                    </div>
+
                 </div>
+
             </div>
             )
         }

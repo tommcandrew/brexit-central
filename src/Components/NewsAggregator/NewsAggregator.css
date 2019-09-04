@@ -1,0 +1,35 @@
+.NewsAggregator {
+    width: 40%;
+    margin-left: auto;
+    padding-top: 2rem;
+
+}
+
+.articles-container {
+}
+
+.article {
+    height: 2rem;
+    padding-bottom: 1rem;
+    list-style: none;
+}
+
+.article a {
+    display:flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+
+.article p:hover {
+    filter:saturate(100%)
+}
+
+.article p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color:black;
+    filter:saturate(60%);
+    overflow: hidden;
+}

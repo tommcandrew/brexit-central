@@ -1,11 +1,12 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
+import NewsAggregator from './Components/NewsAggregator/NewsAggregator'
 
 function App () {
   return (
     <div className='App'>
       <h1>Brexit Planner</h1>
+      <NewsAggregator />
     </div>
   )
 }

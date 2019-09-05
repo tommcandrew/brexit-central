@@ -12,19 +12,10 @@ class Countdown extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.timer = setInterval(
-            () => 
-            this.getTimeRemainingAndUpdate(), 1000
-        )
-    }
+    componentDidMount = () => {
 
-    componentWillUnmount = () => {
-        clearInterval(this.timer)
-    }
-
-    getTimeRemainingAndUpdate = () => {
-
+        this.timer = setInterval(() => {
+            
         let now = new Date()
         let brexit = new Date(2019, 9, 31, 23)
         let msNow = now.getTime()
@@ -62,15 +53,20 @@ class Countdown extends React.Component {
             secsTillBrexit = '0' + secsTillBrexit.toString()
         }
 
-        this.setState(
-            {
+        this.setState ({
             brexitDays: daysTillBrexit,
             brexitHours: hoursTillBrexit,
             brexitMins: minsTillBrexit,
             brexitSecs: secsTillBrexit
-            }
-        )
+        })
+            
+        }, 1000)
     }
+
+    componentWillUnmount = () => {
+        clearInterval(this.timer)
+    }
+
 
     render() {
 

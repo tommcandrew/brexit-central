@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 #countdown-container {
     background: url('./Assets/flag.png');
     background-size: cover;
@@ -9,7 +11,7 @@
 #countdown-display {
     font-size: 4rem;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     width: 70%;
     background: rgb(253, 253, 253);
     border-radius: 10px;

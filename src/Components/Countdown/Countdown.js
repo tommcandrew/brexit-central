@@ -2,8 +2,8 @@ import React from 'react'
 import './Countdown.css'
 
 class Countdown extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             brexitDays: '',
             brexitHours: '',

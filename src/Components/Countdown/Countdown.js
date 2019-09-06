@@ -2,15 +2,14 @@ import React from 'react'
 import './Countdown.css'
 
 class Countdown extends React.Component {
-    constructor(){
-        super();
-        this.state = {
+
+        state = {
             brexitDays: '',
             brexitHours: '',
             brexitMins: '',
             brexitSecs: ''
         }
-    }
+
 
     componentDidMount = () => {
 

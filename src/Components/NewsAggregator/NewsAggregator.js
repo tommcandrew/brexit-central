@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './NewsAggregator.css'
+import uuid from 'uuid/v4'
 
 const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
 class NewsAggregator extends Component {
@@ -18,20 +19,26 @@ class NewsAggregator extends Component {
       'bbc-news,daily-mail,google-news-uk,independent,mirror,reddit-r-all,the-irish-times,the-telegraph,reuters'
     const res = await axios(baseUrl)
     const articles = res.data.articles
-    console.log(res.data.articles)
+
     this.setState({
-      articles: articles
+      articles: articles.map(a => ({ ...a, id: uuid() }))
     })
   }
 
   render () {
     const articles = this.state.articles.map(a => {
+      const time = new Date(a.publishedAt).toLocaleTimeString(undefined, {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })
       return (
-        <li key={a.title} className='article'>
-          <a href={a.url}>
+        <article key={uuid()} className='article'>
+          <a href={a.url} target='_blank' rel='noopener noreferrer'>
+            <span>{time}</span>
             <p>{a.title}</p>
           </a>
-        </li>
+        </article>
       )
     })
     return (

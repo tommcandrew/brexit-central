@@ -63,8 +63,8 @@ class NewsAggregator extends Component {
       const timeAgo = this.timeSince(a.publishedAt)
       return (
         <article key={uuid()} className='article'>
+          <p className='time-passed'>{timeAgo}</p>
           <a href={a.url} target='_blank' rel='noopener noreferrer'>
-            <span>{timeAgo}</span>
             <p>{a.title}</p>
           </a>
         </article>
@@ -72,7 +72,11 @@ class NewsAggregator extends Component {
     })
     return (
       <div className='NewsAggregator'>
-        <h3>The latest from the B word (no, not Boris)</h3>
+        <header className='NewsAggregator-title-container'>
+          <h3 className='NewsAggregator-title'>The latest from the B word</h3>
+          <p className='NewsAggregator-subtitle'>(no, not Boris)</p>
+        </header>
+
         <ul className='articles-container'>{articles}</ul>
       </div>
     )

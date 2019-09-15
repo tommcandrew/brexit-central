@@ -1,11 +1,12 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
+import Map from './Components/Map/Map'
 
 function App () {
   return (
     <div className='App'>
       <h1>Brexit Planner</h1>
+      <Map />
     </div>
   )
 }

@@ -39,7 +39,8 @@ class Map extends React.Component {
     
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === this.DONE) {
-        console.log(this.responseText);
+      var myArr = JSON.parse(this.responseText);
+      console.log(myArr);
       }
     });
     

@@ -15,14 +15,12 @@ class Map extends React.Component {
     this.getSessionResults = this.getSessionResults.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
-  componentDidMount() {
-    this.createSession();
-  }
   
   createSession() {
-    var data = "inboundDate=2019-10-31&cabinClass=business&children=0&infants=0&country=UK&currency=GBP&locale=en-UK&originPlace=LOND-sky&destinationPlace=PARI-sky&outboundDate=2019-10-31&adults=1";
-
+    var chosenOriginPlace = this.state.selectValue;
+    console.log(chosenOriginPlace);
+    var data = "inboundDate=2019-10-31&cabinClass=business&children=0&infants=0&country=UK&currency=GBP&locale=en-UK&originPlace=" + chosenOriginPlace + "-sky&destinationPlace=PARI-sky&outboundDate=2019-10-31&adults=1";
+    console.log("URL" + data);
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
   
@@ -81,6 +79,7 @@ class Map extends React.Component {
   handleChange(e){
     this.setState({ selectValue: e.target.value }, () => {
       console.log("selected value: " + this.state.selectValue);
+      this.createSession();
     });
   }
 

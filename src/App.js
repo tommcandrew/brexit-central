@@ -1,8 +1,8 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.css'
+import MainNav from './Components/MainNav/MainNav'
 
-function App () {
+function App() {
   return (
     <div className='App'>
       <h1>Brexit Planner</h1>

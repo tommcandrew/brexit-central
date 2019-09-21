@@ -1,33 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-#countdown-container {
-    background: url('./Assets/flag.png');
-    background-size: cover;
-    width: 100%;
-    min-height: 20vh;
-    padding: 1rem;
-}
-
 #countdown-display {
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Lato', sans-serif;
-    width: 70%;
+    width: 35%;
     background: rgb(253, 253, 253);
     border-radius: 10px;
-    display: flex;
-    justify-content: space-around;
     color: rgb(44, 38, 38);
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
 }
 
 .label {
-    font-size: 3rem;
+    font-size: 1rem;
     padding-bottom: 0.5rem;
-}
-
-#secs {
-    color: rgb(223, 22, 22);
 }
 
 @media (max-width: 850px) {

@@ -12,6 +12,8 @@ class Map extends React.Component {
     };
     this.getQuotes = this.getQuotes.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.getResults = this.getResults.bind(this);
+    this.sortBubble = this.sortBubble.bind(this);
   }
 
   getQuotes() {
@@ -30,6 +32,7 @@ class Map extends React.Component {
             isLoaded: true,
             quotes: result.Quotes
           });
+          this.getResults();
         },
         (error) => {
           this.setState({
@@ -39,6 +42,46 @@ class Map extends React.Component {
         }
       )
   }
+
+  //To get only 20 the cheapest filghts
+  getResults() {
+    let quotes = this.state.quotes;
+    let result = [];
+    let price;
+    let place;
+    let item = [];
+
+    for(let i = 0; i < quotes.length; i++){
+        place = "Place: " + quotes[i].OutboundLeg.DestinationId;
+        price = "Price: " + quotes[i].MinPrice;
+        item = [place, price];
+        result.push(item);
+    }
+    console.log("Result: " + result);
+    
+    this.sortBubble(result);
+  }
+
+ //To get only the direct flights 
+ /* getResults() {
+    let quotes = this.state.quotes;
+    let result = [];
+    let price;
+    let place;
+    let item = [];
+
+    for(let i = 0; i < quotes.length; i++){
+      if(quotes[i].Direct === true){
+        place = "Place: " + quotes[i].OutboundLeg.DestinationId;
+        price = "Price: " + quotes[i].MinPrice;
+        item = [place, price];
+        result.push(item);
+      }
+    }
+    console.log("Result: " + result);
+    console.log(result.length);
+
+  }*/
 
   handleChange(e){
     this.setState({ selectValue: e.target.value }, () => {

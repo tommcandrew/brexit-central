@@ -5,81 +5,37 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    outBoundAirports: [],
-    inBoundsAirports: [],
-    sessionKey: null,
     selectValue: ""
     };
-    this.createSession = this.createSession.bind(this);
-    this.handleState = this.handleState.bind(this);
-    this.getSessionResults = this.getSessionResults.bind(this);
+ 
     this.handleChange = this.handleChange.bind(this);
+    this.getQuotes = this.getQuotes.bind(this);
   }
-  
-  createSession() {
+
+  getQuotes() {
     var chosenOriginPlace = this.state.selectValue;
-    console.log(chosenOriginPlace);
-    var data = "inboundDate=2019-10-31&cabinClass=business&children=0&infants=0&country=UK&currency=GBP&locale=en-UK&originPlace=" + chosenOriginPlace + "-sky&destinationPlace=PARI-sky&outboundDate=2019-10-31&adults=1";
-    console.log("URL" + data);
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-  
-    xhr.addEventListener("readystatechange", () => {
-      if (this.readyState === this.DONE) {
-       console.log(this.responseText);
-       this.setState({sessionKey:  xhr.getResponseHeader("location")}, this.handleState());
-       console.log("state: " + this.state.sessionKey);
+    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/" + chosenOriginPlace + "-sky/anywhere/2019-10-31?inboundpartialdate=2019-12-01", {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+        "x-rapidapi-key": "7950dacff7mshd54ef549a82264bp1e0133jsne29e4dd7aa24"
       }
+    })
+    .then(response => {
+    var myArr =  response.json();
+    console.log(myArr);
+    return myArr
+    })
+    .catch(err => {
+      console.log(err);
     });
-
-    const url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0";
-    xhr.open("POST", url);
-    xhr.setRequestHeader("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
-    xhr.setRequestHeader("x-rapidapi-key", "7950dacff7mshd54ef549a82264bp1e0133jsne29e4dd7aa24");
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  
-  
-    xhr.send(data);
-    console.log("state: " + this.state.sessionKey);
-    }
-
-  handleState(){
-    console.log("stateHANDLE: " + this.state.sessionKey);
-    if(this.state.sessionKey !== null){
-    let sessionKey = this.state.sessionKey;
-    const url = "http://partners.api.skyscanner.net/apiservices/pricing/uk2/v1.0/";
-    sessionKey = sessionKey.replace(url, " ").trim();
-    console.log(sessionKey);
-    this.getSessionResults(sessionKey);
-    } else {
-      console.log("sessionKey is null");
-    }
-  }
-
-  getSessionResults(sessionKey){
-    var data = null;
-
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-    
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === this.DONE) {
-      var myArr = JSON.parse(this.responseText);
-      console.log(myArr);
-      }
-    });
-    
-    xhr.open("GET", "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/" + sessionKey + "?pageIndex=0&pageSize=10");
-    xhr.setRequestHeader("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
-    xhr.setRequestHeader("x-rapidapi-key", "7950dacff7mshd54ef549a82264bp1e0133jsne29e4dd7aa24");
-    
-    xhr.send(data);
   }
 
   handleChange(e){
     this.setState({ selectValue: e.target.value }, () => {
       console.log("selected value: " + this.state.selectValue);
-      this.createSession();
+     // this.createSessin();
+     this.getQuotes();
     });
   }
 

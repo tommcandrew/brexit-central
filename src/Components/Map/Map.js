@@ -52,14 +52,36 @@ class Map extends React.Component {
     let item = [];
 
     for(let i = 0; i < quotes.length; i++){
-        place = "Place: " + quotes[i].OutboundLeg.DestinationId;
-        price = "Price: " + quotes[i].MinPrice;
+        place = quotes[i].OutboundLeg.DestinationId;
+        price = quotes[i].MinPrice;
         item = [place, price];
         result.push(item);
     }
-    console.log("Result: " + result);
+    console.log(result);
     
     this.sortBubble(result);
+  }
+
+  
+  //bubble sort
+  sortBubble(result) {
+      let len = result.length;
+      let swapped;
+      do {
+          swapped = false;
+          for (let i = 0; i < len - 1; i++) {
+              if (result[i][1] > result[i + 1][1]) {
+                 console.log(result[i][1]);
+                 console.log(result[i + 1][1]);
+                  let tmp = result[i];
+                  result[i] = result[i + 1];
+                  result[i + 1] = tmp;
+                  swapped = true;
+              }
+          }
+      } while (swapped);
+      console.log(result);
+      this.setState({ quotes: result.slice(0,20)}, () => console.log(this.state.quotes));
   }
 
  //To get only the direct flights 
@@ -80,7 +102,7 @@ class Map extends React.Component {
     }
     console.log("Result: " + result);
     console.log(result.length);
-
+     this.setState({ quotes: result, () => console.log(this.state.quotes));
   }*/
 
   handleChange(e){
@@ -91,11 +113,8 @@ class Map extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, quotes } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-       return <select id="dropdown"  onChange={this.handleChange}>
+    return(
+      <select id="dropdown"  onChange={this.handleChange}>
           <option value="Select" defaultValue>Select</option>
           <option value="LCY">London City</option>
           <option value="LGW">London Gatwick</option>
@@ -103,25 +122,8 @@ class Map extends React.Component {
           <option value="LTN">London Luton</option>
           <option value="STN">London Stanstead</option>
       </select>
-    } else {
-      return (
-        <ul>
-          {quotes.map(quote => (
-            <li key={quote.QuoteId}>
-              {quote.QuoteId} {quote.MinPrice}
-            </li>
-          ))}
-        </ul>
-      );
-    }
+    )
   }
 }
-
-
-
-
-
-
-
 
 export default Map

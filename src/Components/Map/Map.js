@@ -17,6 +17,13 @@ class Map extends React.Component {
     this.getCheapest = this.getCheapest.bind(this);
   }
 
+  handleChange(e){
+    this.setState({ selectValue: e.target.value }, () => {
+      console.log("Selected: " + this.state.selectValue);
+      this.getQuotes();
+    });
+  }
+
   getQuotes() {
     let chosenOriginPlace = this.state.selectValue;
 
@@ -28,16 +35,15 @@ class Map extends React.Component {
       }
     })
     .then(res => {
-      const result = res.data;
-      this.setState({ quotes: result.Quotes });
+      this.setState({ quotes: res.data.Quotes });
       this.getResults();
     })
-}
+  }
 
- //get only the direct flights which are under £100
- getResults() {
-    let quotes = this.state.quotes;
-    let result = [];
+  //get only the direct flights which are under £100
+  getResults() {
+    const quotes = this.state.quotes;
+    const result = [];
     let price;
     let place;
     let item = [];
@@ -63,13 +69,6 @@ class Map extends React.Component {
   });;
     const cheapest = sorted.slice(0,20);
     this.setState({ quotes: cheapest }, () => console.log("The cheapest 20: " + this.state.quotes));
-  }
-
-  handleChange(e){
-    this.setState({ selectValue: e.target.value }, () => {
-      console.log("selected value: " + this.state.selectValue);
-     this.getQuotes();
-    });
   }
 
   render() {

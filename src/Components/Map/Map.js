@@ -116,11 +116,26 @@ class Map extends React.Component {
     return(
       <select id="dropdown"  onChange={this.handleChange}>
           <option value="Select" defaultValue>Select</option>
-          <option value="LCY">London City</option>
-          <option value="LGW">London Gatwick</option>
-          <option value="LHR">London Heathrow</option>
-          <option value="LTN">London Luton</option>
-          <option value="STN">London Stanstead</option>
+          <option value="ABZ">Aberdeen</option>
+          <option value="BFS">Belfast</option>
+          <option value="BHX">Birmingham</option>
+          <option value="BOH">Bournemouth</option>
+          <option value="BRS">Bristol</option>
+          <option value="CWL">Cardiff</option>
+          <option value="DSA">Doncaster Sheffield</option>
+          <option value="EDI">Edinburgh</option>
+          <option value="EXT">Exeter</option>
+          <option value="GLA">Glasgow</option>
+          <option value="GCI">Guernsey</option>
+          <option value="INV">Inverness</option>
+          <option value="JER">Jersey</option>
+          <option value="LBA">Leeds Bradford</option>
+          <option value="LPL">Liverpool</option>
+          <option value="LOND">London</option>
+          <option value="MAN">Manchester</option>
+          <option value="NCL">Newcastle</option>
+          <option value="NWI">Norwich</option>
+          <option value="SOU">Southampton</option>
       </select>
     )
   }

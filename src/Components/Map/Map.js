@@ -1,5 +1,6 @@
 import React from 'react'
 import './Map.css'
+import axios from 'axios';
 
 class Map extends React.Component {
   constructor(props) {
@@ -18,30 +19,20 @@ class Map extends React.Component {
 
   getQuotes() {
     let chosenOriginPlace = this.state.selectValue;
-    fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/" + chosenOriginPlace + "-sky/anywhere/2019-10-31?inboundpartialdate=2019-12-01", {
+
+    axios.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/" + chosenOriginPlace + "-sky/anywhere/2019-10-31?inboundpartialdate=2019-12-01", {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
         "x-rapidapi-key": "7950dacff7mshd54ef549a82264bp1e0133jsne29e4dd7aa24"
       }
     })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            quotes: result.Quotes
-          });
-          this.getResults();
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
+    .then(res => {
+      const result = res.data;
+      this.setState({ quotes: result.Quotes });
+      this.getResults();
+    })
+}
 
  //get only the direct flights which are under £100
  getResults() {
@@ -59,10 +50,8 @@ class Map extends React.Component {
         result.push(item);
       }
     }
-    console.log("Result: " + result);
-    console.log(result.length);
     if(result.length < 20) {
-      this.setState({ quotes: result}, () => console.log(this.state.quotes));
+      this.setState({ quotes: result}, () => console.log("Direct and under £100: " + this.state.quotes));
     } else {
       this.getCheapest(result);
     }
@@ -73,8 +62,7 @@ class Map extends React.Component {
       return a[1] - b[1];
   });;
     const cheapest = sorted.slice(0,20);
-    console.log(cheapest.length);
-    this.setState({ quotes: cheapest }, () => console.log("cheapest: " + this.state.quotes));
+    this.setState({ quotes: cheapest }, () => console.log("The cheapest 20: " + this.state.quotes));
   }
 
   handleChange(e){

@@ -14,6 +14,7 @@ class Map extends React.Component {
     this.getQuotesAndPlaces = this.getQuotesAndPlaces.bind(this);
     this.getResults = this.getResults.bind(this);
     this.getCheapest = this.getCheapest.bind(this);
+    this.Flight = this.Flight.bind(this);
   }
 
   handleChange(e){
@@ -35,9 +36,15 @@ class Map extends React.Component {
     })
     .then(res => {
       this.setState({ quotes: res.data.Quotes });
-      this.setState({ places: res.data.Places }, () => console.log(this.state.places));
+      this.setState({ places: res.data.Places });
       this.getResults();
     })
+  }
+
+  Flight(country, airport, price) {
+    this.country = country;
+    this.airport = airport;
+    this.price = price;
   }
 
   getResults() {
@@ -76,8 +83,9 @@ class Map extends React.Component {
       for(let i = 0; i < quotesDestionationIdPrice.length; i++){
         index = placesId.indexOf(quotesDestionationIdPrice[i][0]);
         if(index !== -1){
-          results.push([placesIdCountryAirport[index][1], placesIdCountryAirport[index][2], quotesDestionationIdPrice[i][1]]);
-        }
+        let flight = new this.Flight(placesIdCountryAirport[index][1], placesIdCountryAirport[index][2], quotesDestionationIdPrice[i][1]);
+        results.push(flight);
+      }
     }
 
     console.log(quotesDestionationIdPrice.length);
@@ -118,22 +126,16 @@ class Map extends React.Component {
           <option value="ABZ">Aberdeen</option>
           <option value="BFS">Belfast</option>
           <option value="BHX">Birmingham</option>
-          <option value="BOH">Bournemouth</option>
           <option value="BRS">Bristol</option>
           <option value="CWL">Cardiff</option>
-          <option value="DSA">Doncaster Sheffield</option>
           <option value="EDI">Edinburgh</option>
           <option value="EXT">Exeter</option>
           <option value="GLA">Glasgow</option>
-          <option value="GCI">Guernsey</option>
-          <option value="INV">Inverness</option>
-          <option value="JER">Jersey</option>
           <option value="LBA">Leeds Bradford</option>
           <option value="LPL">Liverpool</option>
           <option value="LOND">London</option>
           <option value="MAN">Manchester</option>
           <option value="NCL">Newcastle</option>
-          <option value="NWI">Norwich</option>
           <option value="SOU">Southampton</option>
       </select>
     )

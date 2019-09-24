@@ -1,3 +1,10 @@
-.App {
+.router-link {
+  text-decoration: none;
+  color: rgb(44, 38, 38);
+}
+
+.container__title {
   text-align: center;
+  margin-top: 50px;
+  font-size: 3rem;
 }

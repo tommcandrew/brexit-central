@@ -1,25 +1,25 @@
-.circle-container {
+.nav-container {
     display: flex;
-    width: 70%;
+    width: 50%;
     justify-content: space-between;
+    margin: 0 auto;
 }
 
-.circle {
+.nav-item {
     width: 180px;
     height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 5px solid black;
-    border-radius: 50%;
     cursor: pointer;
 }
 
-.circle:hover {
+.nav-item:hover {
     background: #333745;
     color: white;
 }
 
-.circle h1 {
+.nav-item__title {
     font-size: 30px;
 }

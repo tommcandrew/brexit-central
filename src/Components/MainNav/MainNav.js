@@ -2,18 +2,15 @@ import React from 'react'
 import './MainNav.css'
 
 const MainNav = () => (
-    <div className="circle-container">
-        <div id="travel" className="travel circle">
-            <h1>News</h1>
+    <div className="nav-container">
+        <div id="travel" className="nav-item nav-item__travel">
+            <h1 className="nav-item__title">News</h1>
         </div>
-        <div className="news circle">
-            <h1>Travel</h1>
+        <div className="nav-item nav-item__news">
+            <h1 className="nav-item__title">Travel</h1>
         </div>
-        <div className="timeline circle">
-            <h1>Timeline</h1>
-        </div>
-        <div className="faqs circle">
-            <h1>FAQs</h1>
+        <div className="nav-item nav-item__timeline">
+            <h1 className="nav-item__title">Timeline</h1>
         </div>
     </div>
 )

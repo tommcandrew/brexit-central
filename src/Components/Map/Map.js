@@ -14,7 +14,6 @@ class Map extends React.Component {
     this.getQuotesAndPlaces = this.getQuotesAndPlaces.bind(this);
     this.getResults = this.getResults.bind(this);
     this.getCheapest = this.getCheapest.bind(this);
-    this.Flight = this.Flight.bind(this);
   }
 
   handleChange(e){
@@ -39,12 +38,6 @@ class Map extends React.Component {
       this.setState({ places: res.data.Places });
       this.getResults();
     })
-  }
-
-  Flight(country, airport, price) {
-    this.country = country;
-    this.airport = airport;
-    this.price = price;
   }
 
   getResults() {
@@ -83,15 +76,14 @@ class Map extends React.Component {
       for(let i = 0; i < quotesDestionationIdPrice.length; i++){
         index = placesId.indexOf(quotesDestionationIdPrice[i][0]);
         if(index !== -1){
-        let flight = new this.Flight(placesIdCountryAirport[index][1], placesIdCountryAirport[index][2], quotesDestionationIdPrice[i][1]);
-        results.push(flight);
+        results.push({country: placesIdCountryAirport[index][1], airport: placesIdCountryAirport[index][2], price:quotesDestionationIdPrice[i][1]});
       }
     }
 
     console.log(quotesDestionationIdPrice.length);
     console.log(results.length);
 
-      this.setState({ quotes: results }, () => console.log("[Country, Airport, Price] " + this.state.quotes));
+      this.setState({ quotes: results }, () => console.log(this.state.quotes));
     } else {
       this.getCheapest(quotesDestionationIdPrice, placesId, placesIdCountryAirport);
     }
@@ -111,12 +103,12 @@ class Map extends React.Component {
     for(let i = 0; i < cheapest.length; i++){
     index = placesId.indexOf(quotesDestionationIdPrice[i][0]);
     if(index !== -1){
-      results.push([placesIdCountryAirport[index][1], placesIdCountryAirport[index][2], cheapest[i][1]]);
+      results.push({country: placesIdCountryAirport[index][1], airport: placesIdCountryAirport[index][2], price: cheapest[i][1]});
     }
   }
   console.log(cheapest.length);
   console.log(results.length);
-    this.setState({ quotes: results }, () => console.log("[Country, Airport, Price] - (20 Cheapest) " + this.state.quotes));
+    this.setState({ quotes: results }, () => console.log(this.state.quotes));
   }
 
   render() {

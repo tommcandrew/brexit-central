@@ -1,19 +1,23 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import './NewsAggregator.css'
 import uuid from 'uuid/v4'
 
-const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
+// const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
+
+//thomas' token
+const TOKEN = 'f39d64a11f6a4049be5b960429271de9'
+
 const TODAY = new Date()
 class NewsAggregator extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       articles: []
     }
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     const todayToISO = TODAY.toISOString()
     const sources =
       'bbc-news,daily-mail,google-news-uk,independent,mirror,reddit-r-all,the-irish-times,the-telegraph,reuters'
@@ -22,14 +26,14 @@ class NewsAggregator extends Component {
     const articles = res.data.articles
 
     this.setState({
-      articles: articles.map(a => ({ ...a, id: uuid() }))
+      articles: articles.map(a => ({...a, id: uuid()}))
     })
   }
 
-  timeSince (date) {
+  timeSince(date) {
     const publishedDate = new Date(date)
     const seconds = Math.floor((TODAY - publishedDate) / 1000)
-    console.log(TODAY, date, seconds)
+    // console.log(TODAY, date, seconds)
     let interval = Math.floor(seconds / 86400)
     let intervalType
 
@@ -58,7 +62,7 @@ class NewsAggregator extends Component {
     return `${interval} ${intervalType} ago`
   }
 
-  render () {
+  render() {
     const articles = this.state.articles.map(a => {
       const timeAgo = this.timeSince(a.publishedAt)
       return (

@@ -9,6 +9,7 @@ class Map extends React.Component {
       error: null,
       isLoaded: false,
       quotes: [],
+      places: [],
       selectValue: ""
     };
     this.getQuotes = this.getQuotes.bind(this);
@@ -36,6 +37,7 @@ class Map extends React.Component {
     })
     .then(res => {
       this.setState({ quotes: res.data.Quotes });
+      this.setState({ places: res.data.Places }, () => console.log(this.state.places));
       this.getResults();
     })
   }
@@ -43,32 +45,71 @@ class Map extends React.Component {
   //get only the direct flights which are under £100
   getResults() {
     const quotes = this.state.quotes;
+    const places = this.state.places;
     const result = [];
-    let price;
-    let place;
-    let item = [];
+    let minPrice;
+    let destinationID;
+    let item= [];
+    let placesQuotes = [];
+    let final = [];
 
     for(let i = 0; i < quotes.length; i++){
       if(quotes[i].Direct === true && quotes[i].MinPrice < 100){
-        place = quotes[i].OutboundLeg.DestinationId;
-        price = quotes[i].MinPrice;
-        item = [place, price];
+        destinationID = quotes[i].OutboundLeg.DestinationId;
+        placesQuotes.push(destinationID);
+        minPrice = quotes[i].MinPrice;
+        item = [destinationID, minPrice];
         result.push(item);
       }
     }
+
+    let placesId = [];
+    console.log(placesQuotes);
+    // map country id and name into an array
+    const placesIdAndName = [];
+      for(let i = 0; i < places.length; i++){
+        placesIdAndName.push([places[i].PlaceId, places[i].CountryName]);
+        placesId.push(places[i].PlaceId);
+      }
+    
+    console.log(placesIdAndName);
+
     if(result.length < 20) {
-      this.setState({ quotes: result}, () => console.log("Direct and under £100: " + this.state.quotes));
+       //filter Places respone to get rid off the duplicates:
+      let current;
+      for(let i = 0; i < result.length; i++){
+      current = placesId.indexOf(result[i][0]);
+      console.log("Current " +  current);
+      if(current !== -1){
+        final.push([placesIdAndName[current][1], result[i][1]]);
+      }
+    }
+    console.log(result.length);
+    console.log(final.length);
+      this.setState({ quotes: final}, () => console.log("[Country, Price] " + this.state.quotes));
     } else {
-      this.getCheapest(result);
+      this.getCheapest(result,placesId, placesIdAndName);
     }
   }
 
-  getCheapest(result) {
+  getCheapest(result,placesId, placesIdAndName) {
+    let final = [];
     const sorted = result.sort(function(a , b) {
       return a[1] - b[1];
   });;
     const cheapest = sorted.slice(0,20);
-    this.setState({ quotes: cheapest }, () => console.log("The cheapest 20: " + this.state.quotes));
+    //filter Places respone to get rid off the duplicates:
+    let current;
+    for(let i = 0; i < cheapest.length; i++){
+    current = placesId.indexOf(result[i][0]);
+    console.log("Current " +  current);
+    if(current !== -1){
+      final.push([placesIdAndName[current][1], cheapest[i][1]]);
+    }
+  }
+  console.log(cheapest.length);
+  console.log(final.length);
+    this.setState({ quotes: final }, () => console.log("[Country, Price] - Cheapest " + this.state.quotes));
   }
 
   render() {

@@ -1,0 +1,31 @@
+.nav-container {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.nav-item {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    background: #333745;
+}
+
+.nav-item:hover .nav-item__title {
+    color: white;
+}
+
+.nav-item__title {
+    font-size: 30px;
+    color: rgb(44, 38, 38);
+}

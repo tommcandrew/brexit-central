@@ -1,0 +1,30 @@
+#countdown-display {
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    width: 35%;
+    background: rgb(253, 253, 253);
+    border-radius: 10px;
+    color: rgb(44, 38, 38);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.label {
+    font-size: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+@media (max-width: 850px) {
+    #countdown-display {
+        flex-direction: column;
+        width: 45%;
+        font-size: 2.7rem;
+    }
+    .label {
+        font-size: 2rem;
+    }
+}

@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.css'
-import MainNav from './Components/MainNav/MainNav'
 
 function App() {
   return (
     <div className='App'>
+       <Countdown />
       <h1>Brexit Planner</h1>
     </div>
   )

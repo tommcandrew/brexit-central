@@ -1,16 +1,19 @@
 import React from 'react'
 import timelineData from './timelineData'
 import './Timeline.css'
+import TimelineElement from './TimelineElement'
 
 class Timeline extends React.Component {
 
     componentDidMount() {
 
+        //the following code adds classes to the elements for animation when the user scrolls down the page
+
         const containerDivs = document.getElementsByClassName('event-container')
         const contentDivs = document.getElementsByClassName('event-container__content')
         const circles = document.getElementsByClassName('event-container__circle')
 
-        //the loops count from 1 so as not to include the first event on timeline (it's visible when user opens page)
+        //the loops count from 1 so as not to include the first event on timeline (should be visible when user opens page)
 
         for (let i = 1; i < containerDivs.length; i++) {
             containerDivs[i].classList.add('--hidden')
@@ -33,7 +36,7 @@ class Timeline extends React.Component {
 
     render() {
 
-        let eventInfo = timelineData.map((event, index) => {
+        let events = timelineData.map((event, index) => {
             let side
             if (index % 2 === 0) {
                 side = 'left'
@@ -46,19 +49,8 @@ class Timeline extends React.Component {
             } else {
                 mediaTag = <iframe src={event.media.src} title={event.media.title} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             }
-
             return (
-                <div key={event.text} className={'event-container event-container--' + side}>
-                    <div className="event-container__circle">
-                    </div>
-                    <div className="event-container__content">
-                        <div className={event.media.type + "-container"}>
-                            {mediaTag}
-                        </div>
-                        <h2 className="event-container__heading">{event.date}</h2>
-                        <p>{event.text}</p>
-                    </div>
-                </div>
+                <TimelineElement side={side} mediaTag={mediaTag} mediaType={event.media.type} date={event.date} text={event.text} />
             )
         }
         )
@@ -67,7 +59,7 @@ class Timeline extends React.Component {
 
             <div className="wrapper" >
                 <h1 className="wrapper__heading">Timeline</h1>
-                {eventInfo}
+                {events}
             </div>
 
         )

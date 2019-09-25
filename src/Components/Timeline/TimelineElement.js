@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TimelineElement({side, mediaTag, date, text}) {
+export default function TimelineElement({side, mediaType, mediaTag, date, text}) {
 
     return (
 
@@ -8,7 +8,7 @@ export default function TimelineElement({side, mediaTag, date, text}) {
             <div className="event-container__circle">
             </div>
             <div className="event-container__content">
-                <div className={mediaTtype + "-container"}>
+                <div className={mediaType + "-container"}>
                     {mediaTag}
                 </div>
                 <h2 className="event-container__heading">{date}</h2>

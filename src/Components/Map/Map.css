@@ -1,0 +1,16 @@
+.Map__back-button {
+    position: absolute;
+    bottom: 40%;
+    left: 10%;
+    border: none;
+    background: white;
+    cursor:pointer;
+    padding:.5rem;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+    border-radius: 5px;
+}
+
+.cityResult {
+    padding-top:20rem;
+    font-size: 2rem;
+}

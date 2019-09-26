@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css'
+import Map from './Components/Map/Map'
 
 import GoogleMap from './Components/GoogleMap'
 

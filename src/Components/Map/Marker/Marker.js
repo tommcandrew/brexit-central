@@ -1,35 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Marker.scss'
 
-class Marker extends Component {
-  render () {
-    const { name, price, selectCountry, selectCity, selector } = this.props
-    return (
-      <div>
-        <div
-          onClick={
-            selector === 'country'
-              ? () => selectCountry(name)
-              : () => selectCity(name)
-          }
-          className='tooltip bounce'
-        >
-          <p
-            style={{
-              fontWeight: 'bold',
-              textTransform: 'uppercase',
-              marginBottom: '.3rem'
-            }}
-          >
-            {name}
-          </p>
-          <p>
-            from <br /> {price}
-          </p>
-        </div>
+const Marker = props => {
+  const { name, price, selectCountry } = props
+  return (
+    <div className='Marker'>
+      <div onClick={() => selectCountry(name)}>
+        <p className='country-name'>{name}</p>
+        <p>
+          from <br /> {price}
+        </p>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Marker

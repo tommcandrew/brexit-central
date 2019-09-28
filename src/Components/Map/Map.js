@@ -54,7 +54,7 @@ class Map extends Component {
     const { center, zoom } = this.props.coordinates
 
     return (
-      <div style={{ width: '80vw', height: '60vh', margin: 'auto' }}>
+      <div className='Map'>
         <GoogleMapReact
           options={this.createMapOptions}
           bootstrapURLKeys={{ key: 'AIzaSyBgQWwReU8XuTMbmvGgbMBkilrVnJm9dzM' }}

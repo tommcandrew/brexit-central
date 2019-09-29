@@ -3,17 +3,30 @@ import './MainNav.css'
 import {Link} from 'react-router-dom'
 
 const MainNav = () => (
-    <div className="nav-container">
-        <Link to="/news" className="nav-item nav-item__travel">
-            <h1 className="nav-item__title">News</h1>
+
+    <div className="cards-container">
+        <Link to="/news" className="card-container news-container">
+            <div className="card-container__content">
+                <h2>NEWS</h2>
+                <p>Get all the latest Brexit news.</p>
+            </div>
         </Link>
-        <Link to="/travel" className="nav-item nav-item__news">
-            <h1 className="nav-item__title">Travel</h1>
+
+        <Link to="/travel" className="card-container travel-container">
+            <div className="card-container__content">
+                <h2>TRAVEL</h2>
+                <p>Buy tickets to other places.</p>
+            </div>
         </Link>
-        <Link to="/timeline" className="nav-item nav-item__timeline">
-            <h1 className="nav-item__title">Timeline</h1>
+
+        <Link to="/timeline" className="card-container timeline-container">
+            <div className="card-container__content">
+                <h2>TIMELINE</h2>
+                <p>Refresh your memory of Brexit history.</p>
+            </div>
         </Link>
     </div>
+
 )
 
 export default MainNav

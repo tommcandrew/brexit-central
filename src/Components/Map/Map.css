@@ -1,0 +1,10 @@
+.Map {
+    width: 80vw; 
+    height: 60vh; 
+    margin: auto
+}
+
+.cityResult {
+    padding-top:20rem;
+    font-size: 2rem;
+}

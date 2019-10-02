@@ -1,0 +1,19 @@
+.Marker {
+    width: 5rem;
+    height: 3rem;
+    padding: .1rem;
+    background: white;
+    border-radius: 5px;
+    cursor:pointer;
+    box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  }
+
+  .Marker p {
+    margin:0;
+  }
+
+  .country-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: .3rem
+  }

@@ -5,12 +5,14 @@
     flex-wrap: wrap;
     margin: 0 auto;
     justify-content: space-around;
-    margin-top: 15vh;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    z-index: 1;
 }
 
 .card-container {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     margin-bottom: 20px;
     margin-right: 40px;
     border-radius: 5px;
@@ -56,7 +58,7 @@
 .card-container__content {
     z-index: 3;
     color: white;
-    font-size: 25px;
+    font-size: 1.5rem;
     font-family: sans-serif;
     padding: 5px;
     position: absolute;
@@ -71,9 +73,6 @@
 .card-container:hover .card-container__content {
     bottom: -5%;
 }
-
-
-
 
 .news-container::after {
     animation: slideshow-news 35s ease-in-out infinite;   
@@ -101,9 +100,6 @@
     }
 }
 
-
-
-
 .travel-container::after {
     animation: slideshow-travel 35s ease-in-out infinite;
 }
@@ -128,8 +124,6 @@
         background-image: url('./assets/airport-square.jpg');
     }
 }
-
-
 
 .timeline-container::after {
     animation: slideshow-timeline 35s ease-in-out infinite;

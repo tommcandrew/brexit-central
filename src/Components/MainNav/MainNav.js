@@ -8,14 +8,14 @@ const MainNav = () => (
         <Link to="/news" className="card-container news-container">
             <div className="card-container__content">
                 <h2>NEWS</h2>
-                <p>Get all the latest Brexit news.</p>
+                <p>Get the latest Brexit news.</p>
             </div>
         </Link>
 
         <Link to="/travel" className="card-container travel-container">
             <div className="card-container__content">
                 <h2>TRAVEL</h2>
-                <p>Buy tickets to other places.</p>
+                <p>Buy a ticket out of here!</p>
             </div>
         </Link>
 

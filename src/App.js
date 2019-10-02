@@ -9,7 +9,7 @@ import {BrowserRouter, Route, Link} from 'react-router-dom'
 function App() {
   return (
 
-    <div>
+    <div className="app-wrapper">
 
       <BrowserRouter>
         <h1 className="container__title"><Link className="router-link" to="/">Brexit Planner</Link></h1>

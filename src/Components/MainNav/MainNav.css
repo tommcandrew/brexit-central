@@ -72,14 +72,86 @@
     bottom: -5%;
 }
 
+
+
+
 .news-container::after {
-    background-image: url('./assets/boris.jpg');
+    animation: slideshow-news 35s ease-in-out infinite;   
 }
+
+
+@keyframes slideshow-news {
+    0%, 100% {
+        background-image: url('./assets/boris-square.jpg');
+    }
+    25% {
+        background-image: url('./assets/boris-square.jpg');
+    }
+    35% {
+        background-image: url('./assets/demo-square.jpg');
+    }   
+    60% {
+        background-image: url('./assets/demo-square.jpg');
+    }  
+    70% {
+        background-image: url('./assets/junker-square.jpg');
+    }
+    95% {
+        background-image: url('./assets/junker-square.jpg');
+    }
+}
+
+
+
 
 .travel-container::after {
-    background-image: url('./assets/airport.jpg');
+    animation: slideshow-travel 35s ease-in-out infinite;
 }
 
+@keyframes slideshow-travel {
+    0%, 100% {
+        background-image: url('./assets/map-square.png');
+    }
+    25% {
+        background-image: url('./assets/map-square.png');
+    }
+    35% {
+        background-image: url('./assets/passport-square.jpg');
+    }   
+    60% {
+        background-image: url('./assets/passport-square.jpg');
+    }  
+    70% {
+        background-image: url('./assets/airport-square.jpg');
+    }
+    95% {
+        background-image: url('./assets/airport-square.jpg');
+    }
+}
+
+
+
 .timeline-container::after {
-    background-image: url('./assets/crossroads.jpg')
+    animation: slideshow-timeline 35s ease-in-out infinite;
+}
+
+@keyframes slideshow-timeline {
+    0%, 100% {
+        background-image: url('./assets/corbyn-square.jpg');
+    }
+    25% {
+        background-image: url('./assets/corbyn-square.jpg');
+    }
+    35% {
+        background-image: url('./assets/facepaint-square.jpg');
+    }   
+    60% {
+        background-image: url('./assets/facepaint-square.jpg');
+    }  
+    70% {
+        background-image: url('./assets/may-square.jpg');
+    }
+    95% {
+        background-image: url('./assets/may-square.jpg');
+    }
 }

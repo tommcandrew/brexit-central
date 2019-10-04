@@ -10,13 +10,12 @@
 
 .wrapper {    
     position: relative;
-        background: #eef;
+    width: 100%;
 }
 
 .wrapper__heading {
     text-align: center;
     font-size: 5em;
-    margin-top: 0.7em;
     margin-bottom: 1em;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -71,21 +70,21 @@ img {
 
 .event-container--left {
     left: 0;
-    padding-left: 10em;
+    padding-left: 4em;
 }
 
 .event-container--right {
     left: 50%;
-    padding-left: 6em;
+    padding-left: 4.5em;
 }
 
 .event-container__content {
-    background: #fff;
     padding: 2em 1em;
     font-size: 1.2em;
     position: relative;
     max-width: 500px;
     border-radius: 6px;
+    background: #eee;
 }
 
 /* arrows */
@@ -95,10 +94,10 @@ img {
     position: absolute;
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent;
-    border-left: 30px solid #fff;
+    border-left: 30px solid #eee; 
     top: 65px;
     width: 0;
-    height: 0
+    height: 0;
 }
 .event-container--left .event-container__content::before {
     right: -30px;

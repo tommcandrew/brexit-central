@@ -6,7 +6,7 @@ const timelineData = [
             title: 'David Cameron announces date of Brexit referendum outside 10 Downing Street'
         },
         date: '20 February 2016',
-        text: 'David Cameron announces that the country will vote in referendum on 23 June.'
+        text: 'David Cameron announces that the country will vote in a referendum on 23 June.'
     },
 
     {
@@ -36,7 +36,7 @@ const timelineData = [
             alt: 'A female demonstrator with the EU flag painted on her face looks at the camera with Big Ben visible in the background'
         },
         date: '2 July 2016',
-        text: 'Thousands of anti-Brexit protesters marched through the streets of London.'
+        text: 'Thousands of anti-Brexit protesters march through the streets of London.'
     },
 
     {
@@ -46,7 +46,7 @@ const timelineData = [
             alt: 'Theresa May and her husband stand at the door of 10 Downing STreet waving'
         },
         date: '13 July 2016',
-        text: 'Theresa May wins a Tory leadership contest and becomes Prime Minister.'
+        text: 'Theresa May wins a Conservative Party leadership contest and becomes the second female Prime Minister.'
     },
 
     {
@@ -56,7 +56,7 @@ const timelineData = [
             alt: 'Theresa May signs Article 50 at her desk.'
         },
         date: '29 March 2017',
-        text: 'May triggers Article 50 of the Lisbon Treaty, formally kick-starting a two-year countdown to the UK exiting the bloc.'
+        text: 'May triggers Article 50 of the Lisbon Treaty, officially starting a two-year countdown to the UK exiting the EU.'
     },
 
     {
@@ -76,7 +76,7 @@ const timelineData = [
             alt: 'A smiling Jeremy Corbyn gives a thumbs up to the camera.'
         },
         date: '9 June 2017',
-        text: 'Election results show a hung Parliament, with Labour gains and the Tories losing its majority.'
+        text: 'Theresa May\'s election gamble is a failure - the Conservatives lose their majority in parliament.'
     },
 
     {
@@ -86,7 +86,7 @@ const timelineData = [
             title: 'Highlights from Theresa May\'s disastrous speech.'
         },
         date: '4 October 2017',
-        text: 'May gives disastrous keynote speech on the last day of the Tory Conference.'
+        text: 'May gives a disastrous speech on the last day of the Conservative Party Conference.'
     },
 
     {
@@ -96,7 +96,7 @@ const timelineData = [
             title: 'Footage from the Brexit demonstration.'
         },
         date: '23 June 2018',
-        text: '100,000 people take part in a People’s Vote demonstration against Brexit.'
+        text: '100,000 people take part in a demonstration demanding a second referendum.'
     },
 
     {
@@ -116,7 +116,7 @@ const timelineData = [
             alt: 'Demonstrators hold up placards with the faces of various politicians belwo the word liar.'
         },
         date: '20 October 2018',
-        text: 'People’s Vote march attracts 700,000 people through the streets of central London, calling for another referendum.'
+        text: 'Another march in support of a second referendum attracts 700,000 people in London'
     },
 
     {
@@ -136,7 +136,7 @@ const timelineData = [
             title: 'Footage from House of Commons as the Prime Minister\'s bill is defeated.'
         },
         date: '15 January 2019',
-        text: 'Theresa May suffers worst parliamentary defeat in modern history as MPs reject her Brexit deal by a majority of 230.'
+        text: 'Theresa May suffers the worst parliamentary defeat in modern history as MPs reject her Brexit deal by a majority of 230.'
     },
 
     {
@@ -146,7 +146,7 @@ const timelineData = [
             title: 'Theresa May\'s tearful farewell speech outside 10 Downing STreet.'
         },
         date: '24 June 2019',
-        text: 'Theresa May resigns.'
+        text: 'Theresa May resigns with a tearful farewell outside Downing Street.'
     },
 
     {
@@ -156,7 +156,7 @@ const timelineData = [
             alt: 'The new Prime Minister Boris Johnson waves from the steps of 10 Downing Street.'
         },
         date: '24 July 2019',
-        text: 'Boris Johnson becomes Prime Minister.'
+        text: 'Boris Johnson becomes the new Prime Minister.'
     },
 
     {
@@ -166,7 +166,7 @@ const timelineData = [
             alt: 'A demonstrator in a Boris Johnson costume holds a spade next to a mock headstone that says RIP British democracy.'
         },
         date: '28 August 2019',
-        text: 'Demonstrations erupt acorss the country after PM asks Queen to suspend Parliament till October, giving MPs less time to block a no-deal Brexit.'
+        text: 'Demonstrations erupt across the country after the Prime Minister asks Queen to suspend Parliament untill October, giving MPs less time to block a no-deal Brexit.'
     },
 
     {
@@ -176,7 +176,7 @@ const timelineData = [
             alt: 'Front page of The Times newspaper with headline: PM loses historic vote.'
         },
         date: '4 September 2019',
-        text: 'MPs back bill blocking 31 Oct no-deal Brexit with opposition MPs and Tory rebels joining to pass bill by 327 votes to 299. PM reacts by calling for general election which opposition parties have refused to back.'
+        text: 'MPs back a bill blocking a no-deal Brexit, forcing the Prime Minister to ask for an extension if a deal is not agreed with the EU by 31 October.'
     }
 ]
 

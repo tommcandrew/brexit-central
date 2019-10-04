@@ -1,6 +1,6 @@
 .app-wrapper {
     background: white;
-    height: 90vh;
+    min-height: 90vh;
     width: 85%;
     margin: 0 auto;
     margin-top: 5vh;
@@ -11,6 +11,7 @@
     align-items: center;
     padding: 10px;
     box-shadow: 0px 0px 8px 0 navy;
+    position: relative;
 }
 
 .router-link {

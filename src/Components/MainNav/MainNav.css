@@ -59,7 +59,6 @@
     z-index: 3;
     color: white;
     font-size: 1.5rem;
-    font-family: sans-serif;
     padding: 5px;
     position: absolute;
     height: 200%;
@@ -81,22 +80,22 @@
 
 @keyframes slideshow-news {
     0%, 100% {
-        background-image: url('./assets/boris-square.jpg');
+        background-image: url('../../assets/boris-square.jpg');
     }
     25% {
-        background-image: url('./assets/boris-square.jpg');
+        background-image: url('../../assets/boris-square.jpg');
     }
     35% {
-        background-image: url('./assets/demo-square.jpg');
+        background-image: url('../../assets/boris-square.jpg');
     }   
     60% {
-        background-image: url('./assets/demo-square.jpg');
+        background-image: url('../../assets/demo-square.jpg');
     }  
     70% {
-        background-image: url('./assets/junker-square.jpg');
+        background-image: url('../../assets/junker-square.jpg');
     }
     95% {
-        background-image: url('./assets/junker-square.jpg');
+        background-image: url('../../assets/junker-square.jpg');
     }
 }
 
@@ -106,22 +105,22 @@
 
 @keyframes slideshow-travel {
     0%, 100% {
-        background-image: url('./assets/map-square.png');
+        background-image: url('../../assets/map-square.png');
     }
     25% {
-        background-image: url('./assets/map-square.png');
+        background-image: url('../../assets/map-square.png');
     }
     35% {
-        background-image: url('./assets/passport-square.jpg');
+        background-image: url('../../assets/passport-square.jpg');
     }   
     60% {
-        background-image: url('./assets/passport-square.jpg');
+        background-image: url('../../assets/passport-square.jpg');
     }  
     70% {
-        background-image: url('./assets/airport-square.jpg');
+        background-image: url('../../assets/airport-square.jpg');
     }
     95% {
-        background-image: url('./assets/airport-square.jpg');
+        background-image: url('../../assets/airport-square.jpg');
     }
 }
 
@@ -131,21 +130,21 @@
 
 @keyframes slideshow-timeline {
     0%, 100% {
-        background-image: url('./assets/corbyn-square.jpg');
+        background-image: url('../../assets/corbyn-square.jpg');
     }
     25% {
-        background-image: url('./assets/corbyn-square.jpg');
+        background-image: url('../../assets/corbyn-square.jpg');
     }
     35% {
-        background-image: url('./assets/facepaint-square.jpg');
+        background-image: url('../../assets/facepaint-square.jpg');
     }   
     60% {
-        background-image: url('./assets/facepaint-square.jpg');
+        background-image: url('../../assets/facepaint-square.jpg');
     }  
     70% {
-        background-image: url('./assets/may-square.jpg');
+        background-image: url('../../assets/may-square.jpg');
     }
     95% {
-        background-image: url('./assets/may-square.jpg');
+        background-image: url('../../assets/may-square.jpg');
     }
 }

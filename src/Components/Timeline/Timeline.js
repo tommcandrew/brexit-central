@@ -2,6 +2,7 @@ import React from 'react'
 import timelineData from './timelineData'
 import './Timeline.css'
 import TimelineElement from './TimelineElement'
+import {Link} from 'react-router-dom'
 
 class Timeline extends React.Component {
 
@@ -57,11 +58,16 @@ class Timeline extends React.Component {
 
         return (
 
+        <div>
+            <div className='links'>
+                <Link className='left' to="/travel">&lt;&nbsp;Travel</Link>
+                <Link className='right' to="/news">News&nbsp;&gt;</Link>
+             </div>
             <div className="wrapper" >
                 <h1 className="wrapper__heading">Timeline</h1>
                 {events}
             </div>
-
+        </div>
         )
 
     }

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './NewsAggregator.css'
 import uuid from 'uuid/v4'
+import {Link} from 'react-router-dom'
 
 // const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
 
@@ -13,7 +14,8 @@ class NewsAggregator extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      articles: []
+      articles: [],
+      slide: null
     }
   }
 
@@ -62,6 +64,10 @@ class NewsAggregator extends Component {
     return `${interval} ${intervalType} ago`
   }
 
+  slide = (side) => {
+    this.setState({ slide: side}, () => console.log(this.state.slide));
+  }
+
   render() {
     const articles = this.state.articles.map(a => {
       const timeAgo = this.timeSince(a.publishedAt)
@@ -75,13 +81,18 @@ class NewsAggregator extends Component {
       )
     })
     return (
+      <div>
+      <div className='links'>
+        <Link className='left'to="/timeline">&lt;&nbsp;Timeline</Link>
+        <Link className='right' to="/travel">Travel&nbsp;&gt;</Link>
+      </div>
       <div className='NewsAggregator'>
         <header className='NewsAggregator-title-container'>
           <h3 className='NewsAggregator-title'>The latest from the B word</h3>
           <p className='NewsAggregator-subtitle'>(no, not Boris)</p>
         </header>
-
         <ul className='articles-container'>{articles}</ul>
+      </div>
       </div>
     )
   }

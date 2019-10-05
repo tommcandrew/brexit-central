@@ -2,6 +2,7 @@ import React from 'react'
 import './FlightFinder.css'
 import axios from 'axios'
 import Map from '../Map/Map'
+import {Link} from 'react-router-dom'
 
 class FlightFinder extends React.Component {
   static defaultProps = {
@@ -222,6 +223,11 @@ class FlightFinder extends React.Component {
     ))
     return (
       <div>
+      <div className='links'>
+        <Link className='left' to="/news">&lt;&nbsp;News</Link>
+        <Link className='right' to="/timeline">Timeline&nbsp;&gt;</Link>
+      </div>
+      <div>
         <select id='dropdown' onChange={this.handleChange}>
           <option value='Select' defaultValue>
             Select
@@ -260,6 +266,7 @@ class FlightFinder extends React.Component {
           ''
         )}
       </div>
+    </div>
     )
   }
 }

@@ -224,8 +224,8 @@ class FlightFinder extends React.Component {
     return (
       <div>
       <div className='links'>
-        <Link className='left' to="/news">News</Link>
-        <Link className='right' to="/timeline">Timeline</Link>
+        <Link className='left' to="/news">&lt;&nbsp;News</Link>
+        <Link className='right' to="/timeline">Timeline&nbsp;&gt;</Link>
       </div>
       <div>
         <select id='dropdown' onChange={this.handleChange}>

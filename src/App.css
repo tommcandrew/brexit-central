@@ -23,3 +23,32 @@
   margin-top: 50px;
   font-size: 3rem;
 }
+
+.left {
+  margin-right: 85%;
+}
+
+.right, .left {
+  text-decoration: none;
+  color: rgb(44, 38, 38);
+  font-size: 20px;
+  font-weight:bolder;
+  cursor: pointer;
+}
+.left:hover{
+  color:blue;
+}
+
+.right:hover{
+  color:blue;
+}
+
+.slide-left {
+  transition: 1s;
+  left: 0;
+}
+
+.slide-right {
+  transition: 1s;
+  right: 0;
+}

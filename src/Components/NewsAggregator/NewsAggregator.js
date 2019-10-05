@@ -14,7 +14,8 @@ class NewsAggregator extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      articles: []
+      articles: [],
+      slide: null
     }
   }
 
@@ -63,6 +64,10 @@ class NewsAggregator extends Component {
     return `${interval} ${intervalType} ago`
   }
 
+  slide = (side) => {
+    this.setState({ slide: side});
+  }
+
   render() {
     const articles = this.state.articles.map(a => {
       const timeAgo = this.timeSince(a.publishedAt)
@@ -78,8 +83,8 @@ class NewsAggregator extends Component {
     return (
       <div>
       <div className='links'>
-        <Link className='left' to="/timeline">Timeline</Link>
-          <Link className='right' to="/travel">Travel</Link>
+        <Link className='left'to="/timeline">&lt;&nbsp;Timeline</Link>
+        <Link className='right' to="/travel">Travel&nbsp;&gt;</Link>
       </div>
       <div className='NewsAggregator'>
         <header className='NewsAggregator-title-container'>

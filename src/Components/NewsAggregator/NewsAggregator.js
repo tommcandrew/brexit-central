@@ -65,7 +65,7 @@ class NewsAggregator extends Component {
   }
 
   slide = (side) => {
-    this.setState({ slide: side});
+    this.setState({ slide: side}, () => console.log(this.state.slide));
   }
 
   render() {

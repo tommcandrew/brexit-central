@@ -36,19 +36,9 @@
   cursor: pointer;
 }
 .left:hover{
-  color:blue;
+  color:#0b1687;
 }
 
 .right:hover{
-  color:blue;
-}
-
-.slide-left {
-  transition: 1s;
-  left: 0;
-}
-
-.slide-right {
-  transition: 1s;
-  right: 0;
+  color:#0b1687;
 }

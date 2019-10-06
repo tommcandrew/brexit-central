@@ -1,3 +1,20 @@
+.FlightFinder {
+    padding-top: 2rem;
+}
+
+.starting-selection {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+}
+
 #dropdown {
     font-size: 1.5rem;
+    margin-left: .5rem;
+    background: transparent;
+    border-radius: 5px;
+    padding-left: .2rem;
+    padding-right: .2rem;
 }

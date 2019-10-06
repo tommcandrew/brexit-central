@@ -85,8 +85,9 @@
   -webkit-text-fill-color: transparent;
 }
 
-.left {
-  margin-right: 85%;
+.links {
+  display:flex;
+  justify-content: space-between;
 }
 
 .right, .left {

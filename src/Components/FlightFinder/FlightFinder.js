@@ -2,8 +2,10 @@ import React from 'react'
 import './FlightFinder.css'
 import axios from 'axios'
 import Map from '../Map/Map'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
+const GMAPS_TOKEN = process.env.REACT_APP_GMAPS_TOKEN
+const RAPIDAPI_TOKEN = process.env.REACT_APP_RAPIDAPI_TOKEN
 class FlightFinder extends React.Component {
   static defaultProps = {
     englishAirports: [
@@ -67,8 +69,7 @@ class FlightFinder extends React.Component {
           headers: {
             'x-rapidapi-host':
               'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com',
-            'x-rapidapi-key':
-              '7950dacff7mshd54ef549a82264bp1e0133jsne29e4dd7aa24'
+            'x-rapidapi-key': `${RAPIDAPI_TOKEN}`
           }
         }
       )
@@ -180,7 +181,7 @@ class FlightFinder extends React.Component {
       let { price, airport, skyscannerCode } = quote
       const baseUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${
         quote.country
-      }&key=AIzaSyBgQWwReU8XuTMbmvGgbMBkilrVnJm9dzM`
+      }&key=${GMAPS_TOKEN}`
       return axios.get(baseUrl).then(res => {
         const country = res.data.results[0]
         return {
@@ -216,57 +217,66 @@ class FlightFinder extends React.Component {
   }
 
   render () {
+    console.log(GMAPS_TOKEN)
     const englishAirports = this.props.englishAirports.map(airport => (
       <option key={airport.code} value={airport.code}>
         {airport.name}
       </option>
     ))
     return (
-      <div>
-      <div className='links'>
-        <Link className='left' to="/news">&lt;&nbsp;News</Link>
-        <Link className='right' to="/timeline">Timeline&nbsp;&gt;</Link>
-      </div>
-      <div>
-        <select id='dropdown' onChange={this.handleChange}>
-          <option value='Select' defaultValue>
-            Select
-          </option>
-          {englishAirports}
-        </select>
-        <Map
-          coordinates={this.props.mapCoord}
-          selectCountry={this.selectCountry}
-          countriesData={this.state.countriesData}
-        />
-        {this.state.selectedCountry ? (
-          <div className='cityResult' ref={ref => (this.myRef = ref)}>
-            <h2 style={{ textTransform: 'uppercase' }}>
-              {`CONGRATULATIONS, YOU ARE READY TO START YOUR NEW LIFE IN
-            ${this.state.selectedCountry.name}!`}
-            </h2>
-            <p>{`The cheapest price we found for this country is to ${
-              this.state.selectedCountry.airport
-            }`}</p>
-            <p>
-              finalize your brexit process on the{' '}
-              <a
-                href={`https://www.skyscanner.net/transport/flights/${
-                  this.state.selectValue
-                }/${this.state.selectedCountry.code}/191031/`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                SkyScanner
-              </a>{' '}
-              website
-            </p>
+      <div className='FlightFinder'>
+        <div className='links'>
+          <Link className='left' to='/news'>
+            &lt;&nbsp;News
+          </Link>
+          <Link className='right' to='/timeline'>
+            Timeline&nbsp;&gt;
+          </Link>
+        </div>
+        <div>
+          <div className='starting-selection'>
+            <span style={{ fontSize: '1.5rem' }}>Select an airport: </span>
+            <select id='dropdown' onChange={this.handleChange}>
+              <option value='Select' defaultValue>
+                Select
+              </option>
+              {englishAirports}
+            </select>
           </div>
-        ) : (
-          ''
-        )}
+
+          <Map
+            coordinates={this.props.mapCoord}
+            selectCountry={this.selectCountry}
+            countriesData={this.state.countriesData}
+          />
+          {this.state.selectedCountry ? (
+            <div className='cityResult' ref={ref => (this.myRef = ref)}>
+              <h2 style={{ textTransform: 'uppercase' }}>
+                {`CONGRATULATIONS, YOU ARE READY TO START YOUR NEW LIFE IN
+            ${this.state.selectedCountry.name}!`}
+              </h2>
+              <p>{`The cheapest price we found for this country is to ${
+                this.state.selectedCountry.airport
+              }`}</p>
+              <p>
+                finalize your brexit process on the{' '}
+                <a
+                  href={`https://www.skyscanner.net/transport/flights/${
+                    this.state.selectValue
+                  }/${this.state.selectedCountry.code}/191031/`}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  SkyScanner
+                </a>{' '}
+                website
+              </p>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
-    </div>
     )
   }
 }

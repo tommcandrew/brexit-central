@@ -1,17 +1,14 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import './NewsAggregator.css'
 import uuid from 'uuid/v4'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-// const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
-
-//thomas' token
-const TOKEN = 'f39d64a11f6a4049be5b960429271de9'
+const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
 
 const TODAY = new Date()
 class NewsAggregator extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       articles: [],
@@ -19,7 +16,7 @@ class NewsAggregator extends Component {
     }
   }
 
-  async componentDidMount() {
+  async componentDidMount () {
     const todayToISO = TODAY.toISOString()
     const sources =
       'bbc-news,daily-mail,google-news-uk,independent,mirror,reddit-r-all,the-irish-times,the-telegraph,reuters'
@@ -28,11 +25,11 @@ class NewsAggregator extends Component {
     const articles = res.data.articles
 
     this.setState({
-      articles: articles.map(a => ({...a, id: uuid()}))
+      articles: articles.map(a => ({ ...a, id: uuid() }))
     })
   }
 
-  timeSince(date) {
+  timeSince (date) {
     const publishedDate = new Date(date)
     const seconds = Math.floor((TODAY - publishedDate) / 1000)
     // console.log(TODAY, date, seconds)
@@ -64,11 +61,11 @@ class NewsAggregator extends Component {
     return `${interval} ${intervalType} ago`
   }
 
-  slide = (side) => {
-    this.setState({ slide: side}, () => console.log(this.state.slide));
+  slide = side => {
+    this.setState({ slide: side }, () => console.log(this.state.slide))
   }
 
-  render() {
+  render () {
     const articles = this.state.articles.map(a => {
       const timeAgo = this.timeSince(a.publishedAt)
       return (
@@ -82,17 +79,21 @@ class NewsAggregator extends Component {
     })
     return (
       <div>
-      <div className='links'>
-        <Link className='left'to="/timeline">&lt;&nbsp;Timeline</Link>
-        <Link className='right' to="/travel">Travel&nbsp;&gt;</Link>
-      </div>
-      <div className='NewsAggregator'>
-        <header className='NewsAggregator-title-container'>
-          <h3 className='NewsAggregator-title'>The latest from the B word</h3>
-          <p className='NewsAggregator-subtitle'>(no, not Boris)</p>
-        </header>
-        <ul className='articles-container'>{articles}</ul>
-      </div>
+        <div className='links'>
+          <Link className='left' to='/timeline'>
+            &lt;&nbsp;Timeline
+          </Link>
+          <Link className='right' to='/travel'>
+            Travel&nbsp;&gt;
+          </Link>
+        </div>
+        <div className='NewsAggregator'>
+          <header className='NewsAggregator-title-container'>
+            <h3 className='NewsAggregator-title'>The latest from the B word</h3>
+            <p className='NewsAggregator-subtitle'>(no, not Boris)</p>
+          </header>
+          <ul className='articles-container'>{articles}</ul>
+        </div>
       </div>
     )
   }

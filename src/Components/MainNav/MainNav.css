@@ -36,27 +36,54 @@
     z-index: -1;
 }
 
-.card-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left:0;
-    bottom: 0;
-    right: 0;
-    background-size: cover;
-    background-position: center;
-    border-radius: 5px;
-    opacity: 0.7;
-    z-index: -1;
-    transition: opacity 250ms ease-out;
+.img-container {
+  z-index: 1;
+  opacity: 0.7;
+  position: relative;
+  left: -90px;
+  color: white;
+  font-size: 2rem;
 }
 
-.card-container:hover::after {
-    opacity: 0.4;
+.card-container:hover .img-container {
+  opacity: 0.4;
+}
+
+.img-container img {
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  animation-name: slideshow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; 
+  animation-duration: 20s; 
+}
+
+@keyframes slideshow {
+  0% {
+      opacity: 0;
+  }
+  10% {
+      opacity: 1;
+  }
+  33.3% {
+      opacity: 1;
+  }
+  43.3% {
+      opacity: 0;
+  }
+}
+
+#demo, #airport, #corbyn {
+  animation-delay: 6660ms;
+}
+
+#junker, #passport, #may {
+  animation-delay: 13220ms;
 }
 
 .card-container__content {
-    z-index: 3;
+    z-index: 2;
     color: white;
     font-size: 1.5rem;
     padding: 5px;
@@ -71,80 +98,4 @@
 
 .card-container:hover .card-container__content {
     bottom: -5%;
-}
-
-.news-container::after {
-    animation: slideshow-news 35s ease-in-out infinite;   
-}
-
-
-@keyframes slideshow-news {
-    0%, 100% {
-        background-image: url('../../assets/boris-square.jpg');
-    }
-    25% {
-        background-image: url('../../assets/boris-square.jpg');
-    }
-    35% {
-        background-image: url('../../assets/boris-square.jpg');
-    }   
-    60% {
-        background-image: url('../../assets/demo-square.jpg');
-    }  
-    70% {
-        background-image: url('../../assets/junker-square.jpg');
-    }
-    95% {
-        background-image: url('../../assets/junker-square.jpg');
-    }
-}
-
-.travel-container::after {
-    animation: slideshow-travel 35s ease-in-out infinite;
-}
-
-@keyframes slideshow-travel {
-    0%, 100% {
-        background-image: url('../../assets/map-square.png');
-    }
-    25% {
-        background-image: url('../../assets/map-square.png');
-    }
-    35% {
-        background-image: url('../../assets/passport-square.jpg');
-    }   
-    60% {
-        background-image: url('../../assets/passport-square.jpg');
-    }  
-    70% {
-        background-image: url('../../assets/airport-square.jpg');
-    }
-    95% {
-        background-image: url('../../assets/airport-square.jpg');
-    }
-}
-
-.timeline-container::after {
-    animation: slideshow-timeline 35s ease-in-out infinite;
-}
-
-@keyframes slideshow-timeline {
-    0%, 100% {
-        background-image: url('../../assets/corbyn-square.jpg');
-    }
-    25% {
-        background-image: url('../../assets/corbyn-square.jpg');
-    }
-    35% {
-        background-image: url('../../assets/facepaint-square.jpg');
-    }   
-    60% {
-        background-image: url('../../assets/facepaint-square.jpg');
-    }  
-    70% {
-        background-image: url('../../assets/may-square.jpg');
-    }
-    95% {
-        background-image: url('../../assets/may-square.jpg');
-    }
 }

@@ -94,13 +94,20 @@
   text-decoration: none;
   color: rgb(44, 38, 38);
   font-size: 20px;
-  font-weight:bolder;
   cursor: pointer;
+  margin:15px 0;
+  font-weight: bolder;
 }
 .left:hover{
-  color:#0b1687;
+  opacity: 0.5;
 }
 
 .right:hover{
-  color:#0b1687;
+  opacity: 0.5;
+}
+
+@media (max-width: 700px) {
+  .left, .right{
+    font-size: 14px;
+  }
 }

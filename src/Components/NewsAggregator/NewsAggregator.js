@@ -78,7 +78,7 @@ class NewsAggregator extends Component {
       )
     })
     return (
-      <div>
+      <div className='page-container'>
         <div className='links'>
           <Link className='left' to='/timeline'>
             &lt;&nbsp;Timeline

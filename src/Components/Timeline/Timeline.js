@@ -58,16 +58,16 @@ class Timeline extends React.Component {
 
         return (
 
-        <div>
-            <div className='links'>
-                <Link className='left' to="/travel">&lt;&nbsp;Travel</Link>
-                <Link className='right' to="/news">News&nbsp;&gt;</Link>
-             </div>
-            <div className="wrapper" >
-                <h1 className="wrapper__heading">Timeline</h1>
-                {events}
+            <div className="page-wrapper">
+                <div className='links'>
+                    <Link className='left' to="/travel">&lt;&nbsp;Travel</Link>
+                    <Link className='right' to="/news">News&nbsp;&gt;</Link>
+                </div>
+                <div className="wrapper" >
+                    <h1 className="wrapper__heading">Timeline</h1>
+                    {events}
+                </div>
             </div>
-        </div>
         )
 
     }

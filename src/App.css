@@ -52,7 +52,7 @@
 .flags {
   font-weight: 800;
   font-size: 5rem;
-  filter: drop-shadow(3px 0px 5px #000000)drop-shadow(2px 2px 2px #ccc);
+  filter: drop-shadow(3px 0px 5px rgba(0,0,0,.6))drop-shadow(2px 2px 2px #ccc);
   letter-spacing:.5rem;
   line-height: 5rem;
 }

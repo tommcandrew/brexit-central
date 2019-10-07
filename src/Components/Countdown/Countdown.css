@@ -28,6 +28,7 @@
     color: #d4020d;
     margin-top: 15px;
     font-weight: bolder;
+    text-shadow: 1px 1px yellow;
 }
 
 @media (max-width: 850px) {
@@ -37,6 +38,10 @@
         font-size: 2.7rem;
     }
     .label {
-        font-size: 2rem;
+        font-size: 14px;
+    }
+
+    .clock-section {
+        padding: 10px 10px;
     }
 }

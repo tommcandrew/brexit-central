@@ -11,8 +11,7 @@ class NewsAggregator extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      articles: [],
-      slide: null
+      articles: []
     }
   }
 
@@ -61,9 +60,6 @@ class NewsAggregator extends Component {
     return `${interval} ${intervalType} ago`
   }
 
-  slide = side => {
-    this.setState({ slide: side }, () => console.log(this.state.slide))
-  }
 
   render () {
     const articles = this.state.articles.map(a => {

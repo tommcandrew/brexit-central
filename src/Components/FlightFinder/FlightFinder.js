@@ -116,7 +116,6 @@ class FlightFinder extends React.Component {
       // filter Places respone to include only destination ids that correspond to the Quotes destination ids
 
       let index
-      // console.log(placesIdCountryAirport)
       for (let i = 0; i < quotesDestionationIdPrice.length; i++) {
         index = placesId.indexOf(quotesDestionationIdPrice[i][0])
         if (index !== -1) {
@@ -207,8 +206,6 @@ class FlightFinder extends React.Component {
   selectCountry (name) {
     const countries = this.state.countriesData
     const selectedCountry = countries.filter(c => c.name === name)[0]
-    console.log(selectedCountry)
-
     this.setState({ selectedCountry: selectedCountry }, this.scrollToMyRef)
   }
 
@@ -217,7 +214,6 @@ class FlightFinder extends React.Component {
   }
 
   render () {
-    console.log(GMAPS_TOKEN)
     const englishAirports = this.props.englishAirports.map(airport => (
       <option key={airport.code} value={airport.code}>
         {airport.name}

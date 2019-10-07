@@ -8,6 +8,10 @@
     opacity: 0;
 }
 
+.page-wrapper {
+    width: 100%;
+}
+
 .wrapper {    
     position: relative;
     width: 100%;

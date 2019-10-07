@@ -35,7 +35,7 @@
     #countdown-display {
         flex-direction: column;
         width: 45%;
-        font-size: 2.7rem;
+        font-size: 2.5rem;
     }
     .label {
         font-size: 14px;
@@ -43,5 +43,22 @@
 
     .clock-section {
         padding: 10px 10px;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    #countdown-display {
+        flex-direction: column;
+        width: 45%;
+        font-size: 1.4rem;
+    }
+    .label {
+        font-size: 14px;
+    }
+
+    .clock-section {
+        padding: 10px 10px;
+        margin: 0 5px;
     }
 }

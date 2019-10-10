@@ -51,7 +51,7 @@ class FlightFinder extends React.Component {
   }
 
   handleChange (e) {
-    this.setState({ selectValue: e.target.value }, () => {
+    this.setState({ selectValue: e.target.value, selectedCountry: '' }, () => {
       this.getQuotesAndPlaces()
     })
   }
@@ -247,16 +247,19 @@ class FlightFinder extends React.Component {
           />
           {this.state.selectedCountry ? (
             <div className='cityResult' ref={ref => (this.myRef = ref)}>
-              <h2 style={{ textTransform: 'uppercase' }}>
-                {`CONGRATULATIONS, YOU ARE READY TO START YOUR NEW LIFE IN
-            ${this.state.selectedCountry.name}!`}
-              </h2>
-              <p>{`The cheapest price we found for this country is to ${
-                this.state.selectedCountry.airport
-              }`}</p>
-              <p>
+              <h2 class='result--title'>Great Choice!</h2>
+              <h4 class='result--subtitle'>
+                {`You are ready to start your new life in ${
+                  this.state.selectedCountry.name
+                }.`}
+              </h4>
+              <p className='result--copy'>
+                {`The cheapest price we found for this country is to ${
+                  this.state.selectedCountry.airport
+                }, `}
                 finalize your brexit process on the{' '}
                 <a
+                  className='result--link'
                   href={`https://www.skyscanner.net/transport/flights/${
                     this.state.selectValue
                   }/${this.state.selectedCountry.code}/191031/`}
@@ -265,7 +268,7 @@ class FlightFinder extends React.Component {
                 >
                   SkyScanner
                 </a>{' '}
-                website
+                website.
               </p>
             </div>
           ) : (

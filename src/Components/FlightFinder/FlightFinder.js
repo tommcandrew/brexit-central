@@ -2,7 +2,7 @@ import React from 'react'
 import './FlightFinder.css'
 import axios from 'axios'
 import Map from '../Map/Map'
-import {Link} from 'react-router-dom'
+import Arrows from '../Arrows/Arrows'
 
 const GMAPS_TOKEN = process.env.REACT_APP_GMAPS_TOKEN
 const RAPIDAPI_TOKEN = process.env.REACT_APP_RAPIDAPI_TOKEN
@@ -225,14 +225,7 @@ class FlightFinder extends React.Component {
     ))
     return (
       <div className={'Flightfinder travel-container ' + this.props.direction}>
-        <div className='links'>
-          <span className='left-arrow' onClick={() => this.props.updateNextPage('news')}>
-            &lt;&nbsp;News
-          </span>
-          <span className='right-arrow' onClick={() => this.props.updateNextPage('timeline')}>
-            Timeline&nbsp;&gt;
-          </span>
-        </div>
+        <Arrows left='news' right='timeline' updateNextPage={this.props.updateNextPage} />
         <div>
           <div className='starting-selection'>
             <span style={{fontSize: '1.5rem'}}>Select an airport: </span>

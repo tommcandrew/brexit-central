@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './NewsAggregator.css'
 import uuid from 'uuid/v4'
-import {Link} from 'react-router-dom'
+import Arrows from '../Arrows/Arrows'
 
 const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
 
@@ -78,14 +78,7 @@ class NewsAggregator extends Component {
     })
     return (
       <div className={'news-container ' + this.props.direction}>
-        <div className='links'>
-          <span className='left-arrow' onClick={() => this.props.updateNextPage('timeline')}>
-            &lt;&nbsp;Timeline
-          </span>
-          <span className='right-arrow' onClick={() => this.props.updateNextPage('travel')}>
-            Travel&nbsp;&gt;
-          </span>
-        </div>
+        <Arrows left='timeline' right='travel' updateNextPage={this.props.updateNextPage} />
         <div className='NewsAggregator'>
           <header className='NewsAggregator-title-container'>
             <h3 className='NewsAggregator-title'>The latest from the B word</h3>

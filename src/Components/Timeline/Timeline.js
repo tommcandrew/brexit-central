@@ -2,6 +2,7 @@ import React from 'react'
 import timelineData from './timelineData'
 import './Timeline.css'
 import TimelineElement from './TimelineElement'
+import Arrows from '../Arrows/Arrows'
 
 class Timeline extends React.Component {
 
@@ -60,10 +61,7 @@ class Timeline extends React.Component {
         return (
 
             <div className={'timeline-container ' + this.props.direction}>
-                <div className='links'>
-                    <span className='left-arrow' onClick={() => this.props.updateNextPage('travel')}>&lt;&nbsp;Travel</span>
-                    <span className='right-arrow' onClick={() => this.props.updateNextPage('news')}>News&nbsp;&gt;</span>
-                </div>
+                <Arrows left='travel' right='news' updateNextPage={this.props.updateNextPage} />
                 <div className="wrapper" >
                     <h1 className="wrapper__heading">Timeline</h1>
                     {events}

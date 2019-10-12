@@ -1,0 +1,27 @@
+.links {
+    display:flex;
+    justify-content: space-between;
+  }
+  
+  .right-arrow, .left-arrow {
+    text-decoration: none;
+    color: rgb(44, 38, 38);
+    font-size: 20px;
+    cursor: pointer;
+    margin:15px 0;
+    font-weight: bolder;
+  }
+  .left-arrow:hover{
+    opacity: 0.5;
+  }
+  
+  .right-arrow:hover{
+    opacity: 0.5;
+  }
+  
+  @media (max-width: 700px) {
+    .left-arrow, .right-arrow{
+      font-size: 14px;
+    }
+  
+  }

@@ -15,7 +15,7 @@ class Home extends React.Component {
 
             <div className='home-container'>
                 <Countdown />
-                <MainNav />
+                <MainNav updateNextPage={this.props.updateNextPage} />
             </div>
         )
     }

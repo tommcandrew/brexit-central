@@ -17,6 +17,7 @@ class App extends React.Component {
     travelPageDirection: '',
     timelinePageDirection: '',
     nextPage: '',
+    timeout: ''
   }
 
   updateCurrentPage = (page) => {
@@ -29,46 +30,57 @@ class App extends React.Component {
 
   updatePageDirections = (nextPage) => {
 
-    let newsPageDirection, travelPageDirection, timelinePageDirection
+    let newsPageDirection, travelPageDirection, timelinePageDirection, timeout
+
+    if (this.state.currentPage === 'home') {
+      newsPageDirection = undefined
+      travelPageDirection = undefined
+      timelinePageDirection = undefined
+      timeout = 0
+    }
 
     if (nextPage === 'home') {
       newsPageDirection = undefined
       travelPageDirection = undefined
       timelinePageDirection = undefined
       nextPage = '/'
+      timeout = 0
 
     } else if (this.state.currentPage === 'news' && nextPage === 'travel') {
       newsPageDirection = 'left'
       travelPageDirection = 'right'
       timelinePageDirection = undefined
+      timeout = 500
     } else if (this.state.currentPage === 'news' && nextPage === 'timeline') {
       newsPageDirection = 'right'
       travelPageDirection = undefined
       timelinePageDirection = 'left'
-
+      timeout = 500
     } else if (this.state.currentPage === 'travel' && nextPage === 'timeline') {
       newsPageDirection = undefined
       travelPageDirection = 'left'
       timelinePageDirection = 'right'
+      timeout = 500
     } else if (this.state.currentPage === 'travel' && nextPage === 'news') {
       newsPageDirection = 'left'
       travelPageDirection = 'right'
       timelinePageDirection = undefined
-
+      timeout = 500
     } else if (this.state.currentPage === 'timeline' && nextPage === 'news') {
       newsPageDirection = 'right'
       travelPageDirection = undefined
       timelinePageDirection = 'left'
+      timeout = 500
     } else if (this.state.currentPage === 'timeline' && nextPage === 'travel') {
       newsPageDirection = undefined
       travelPageDirection = 'left'
       timelinePageDirection = 'right'
+      timeout = 500
     }
-    this.setState(() => ({newsPageDirection, travelPageDirection, timelinePageDirection}), () => history.push(nextPage))
+    this.setState(() => ({newsPageDirection, travelPageDirection, timelinePageDirection, timeout}), () => history.push(nextPage))
   }
 
   render() {
-
 
     return (
       <Router history={history}>
@@ -80,12 +92,12 @@ class App extends React.Component {
               <div className='page-container'>
                 <TransitionGroup component={null}>
                   <CSSTransition
-                    timeout={500}
+                    timeout={this.state.timeout}
                     classNames={'page'}
                     key={location.key}
                   >
                     <Switch location={location}>
-                      <Route exact path="/" render={(props) => <Home updateCurrentPage={this.updateCurrentPage} />} />
+                      <Route exact path="/" render={(props) => <Home updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} />} />
                       <Route exact path="/news" render={(props) => <NewsAggregator updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} direction={this.state.newsPageDirection} />} />
                       <Route exact path="/travel" render={(props) => <FlightFinder updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} direction={this.state.travelPageDirection} />} />
                       <Route exact path="/timeline" render={(props) => <Timeline updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} direction={this.state.timelinePageDirection} />} />

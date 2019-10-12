@@ -1,4 +1,38 @@
 
+.header-container {
+  background: black;
+}
+
+.router-link {
+  display: inline-block;
+  font-family:'Work Sans';
+  text-decoration: none;
+  color: rgb(44, 38, 38);
+  text-align: center;
+  line-height: 5rem;
+  margin-top: 50px;
+  font-size: 4.5rem;
+  font-weight: 100;
+  letter-spacing: .3rem;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+  -webkit-background-clip: text;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width:768px) {
+  .router-link {
+    font-size:2.5rem;
+    letter-spacing:.5rem;
+    line-height: 2.5rem;
+  }
+}
+
 .flags-container {
     margin-bottom:-1rem;
   }
@@ -45,6 +79,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .header-container {
-    z-index: 10;
-  }
+.planner {
+  color: white;
+}

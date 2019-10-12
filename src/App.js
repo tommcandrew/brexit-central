@@ -76,8 +76,7 @@ class App extends React.Component {
         <Route render={({location}) => {
           return (
             <div>
-              {/* <Header updateNextPage={this.updateNextPage} /> */}
-
+              <Header updateNextPage={this.updateNextPage} />
               <div className='page-container'>
                 <TransitionGroup component={null}>
                   <CSSTransition

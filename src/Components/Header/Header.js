@@ -9,7 +9,9 @@ export default function Header(props) {
                     <span className='flags brit-flag'>Bre</span>
                     <span className='flags euro-flag'>xit</span>
                 </div>
-                Planner
+                <span className="planner">
+                    Planner
+                </span>
             </span>
         </div>
     )

@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.css'
-import Container from './Components/Container/Container'
+import Home from './Components/Home/Home'
 import NewsAggregator from './Components/NewsAggregator/NewsAggregator'
 import FlightFinder from './Components/FlightFinder/FlightFinder'
 import Timeline from './Components/Timeline/Timeline'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import {BrowserRouter, Route, Link} from 'react-router-dom'
 
-function App () {
+function App() {
   return (
     <div className='app-wrapper'>
       <BrowserRouter>
@@ -17,7 +17,7 @@ function App () {
           </div>
           Planner
         </Link>
-        <Route exact path='/' component={Container} />
+        <Route exact path='/' component={Home} />
         <Route path='/news' component={NewsAggregator} />
         <Route path='/travel' component={FlightFinder} />
         <Route path='/timeline' component={Timeline} />

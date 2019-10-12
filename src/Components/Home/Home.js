@@ -1,9 +1,9 @@
 import React from 'react'
 import Countdown from '../Countdown/Countdown'
 import MainNav from '../MainNav/MainNav'
-import './Container.css'
+import './Home.css'
 
-export default function Container() {
+export default function Home() {
     return (
 
         <div>

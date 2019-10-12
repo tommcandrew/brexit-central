@@ -1,6 +1,7 @@
 
 .header-container {
   background: black;
+  padding: 5px;
 }
 
 .router-link {

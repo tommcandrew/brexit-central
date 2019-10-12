@@ -1,5 +1,5 @@
 #countdown-container {
-background: white;
+    padding-top: 30px;
 }
 
 #countdown-display {
@@ -12,7 +12,6 @@ background: white;
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: space-around;
-    background: white;
 }
 
 .clock-section {

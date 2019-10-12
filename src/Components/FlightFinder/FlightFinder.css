@@ -1,7 +1,3 @@
-.FlightFinder {
-    /* padding-top: 2rem; */
-}
-
 .starting-selection {
     display:flex;
     align-items: center;
@@ -47,4 +43,3 @@
 .result--link {
     text-decoration:none;
 }
-

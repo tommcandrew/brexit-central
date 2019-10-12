@@ -1,14 +1,16 @@
 import React from 'react'
 import './Header.css'
 
-export default function Header() {
+export default function Header(props) {
     return (
-        <a className='router-link' href='/'>
-            <div className='flags-container'>
-                <span className='flags brit-flag'>Bre</span>
-                <span className='flags euro-flag'>xit</span>
-            </div>
-            Planner
-      </a>
+        <div className="header-container">
+            <span className='router-link' onClick={() => props.updateNextPage('home')}>
+                <div className='flags-container'>
+                    <span className='flags brit-flag'>Bre</span>
+                    <span className='flags euro-flag'>xit</span>
+                </div>
+                Planner
+            </span>
+        </div>
     )
 }

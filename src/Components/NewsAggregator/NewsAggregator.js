@@ -1,21 +1,24 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import './NewsAggregator.css'
 import uuid from 'uuid/v4'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 const TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN
 
 const TODAY = new Date()
 class NewsAggregator extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       articles: []
     }
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
+
+    this.props.updateCurrentPage('news')
+
     const todayToISO = TODAY.toISOString()
     const sources =
       'bbc-news,daily-mail,google-news-uk,independent,mirror,reddit-r-all,the-irish-times,the-telegraph,reuters'
@@ -24,11 +27,11 @@ class NewsAggregator extends Component {
     const articles = res.data.articles
 
     this.setState({
-      articles: articles.map(a => ({ ...a, id: uuid() }))
+      articles: articles.map(a => ({...a, id: uuid()}))
     })
   }
 
-  timeSince (date) {
+  timeSince(date) {
     const publishedDate = new Date(date)
     const seconds = Math.floor((TODAY - publishedDate) / 1000)
     // console.log(TODAY, date, seconds)
@@ -61,7 +64,7 @@ class NewsAggregator extends Component {
   }
 
 
-  render () {
+  render() {
     const articles = this.state.articles.map(a => {
       const timeAgo = this.timeSince(a.publishedAt)
       return (
@@ -74,14 +77,14 @@ class NewsAggregator extends Component {
       )
     })
     return (
-      <div className='page-container'>
+      <div className={'news-container ' + this.props.direction}>
         <div className='links'>
-          <Link className='left' to='/timeline'>
+          <span className='left-arrow' onClick={() => this.props.updateNextPage('timeline')}>
             &lt;&nbsp;Timeline
-          </Link>
-          <Link className='right' to='/travel'>
+          </span>
+          <span className='right-arrow' onClick={() => this.props.updateNextPage('travel')}>
             Travel&nbsp;&gt;
-          </Link>
+          </span>
         </div>
         <div className='NewsAggregator'>
           <header className='NewsAggregator-title-container'>

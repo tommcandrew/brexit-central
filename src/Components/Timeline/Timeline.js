@@ -2,11 +2,12 @@ import React from 'react'
 import timelineData from './timelineData'
 import './Timeline.css'
 import TimelineElement from './TimelineElement'
-import {Link} from 'react-router-dom'
 
 class Timeline extends React.Component {
 
     componentDidMount() {
+
+        this.props.updateCurrentPage('timeline')
 
         //the following code adds classes to the elements for animation when the user scrolls down the page
 
@@ -58,10 +59,10 @@ class Timeline extends React.Component {
 
         return (
 
-            <div className="page-wrapper">
+            <div className={'timeline-container ' + this.props.direction}>
                 <div className='links'>
-                    <Link className='left' to="/travel">&lt;&nbsp;Travel</Link>
-                    <Link className='right' to="/news">News&nbsp;&gt;</Link>
+                    <span className='left-arrow' onClick={() => this.props.updateNextPage('travel')}>&lt;&nbsp;Travel</span>
+                    <span className='right-arrow' onClick={() => this.props.updateNextPage('news')}>News&nbsp;&gt;</span>
                 </div>
                 <div className="wrapper" >
                     <h1 className="wrapper__heading">Timeline</h1>

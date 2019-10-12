@@ -1,4 +1,4 @@
-.app-wrapper {
+.page-container {
     background: white;
     min-height: 90vh;
     width: 85%;
@@ -39,13 +39,12 @@
   }
 }
 
-
 .links {
   display:flex;
   justify-content: space-between;
 }
 
-.right, .left {
+.right-arrow, .left-arrow {
   text-decoration: none;
   color: rgb(44, 38, 38);
   font-size: 20px;
@@ -53,16 +52,94 @@
   margin:15px 0;
   font-weight: bolder;
 }
-.left:hover{
+.left-arrow:hover{
   opacity: 0.5;
 }
 
-.right:hover{
+.right-arrow:hover{
   opacity: 0.5;
 }
 
 @media (max-width: 700px) {
-  .left, .right{
+  .left-arrow, .right-arrow{
     font-size: 14px;
   }
+
 }
+
+@keyframes slideInLeft {
+  from {
+    transform: translate(-100%);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translate(-100%);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate(100%);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+
+@keyframes slideOutRight {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translate(100%);
+  }
+} 
+
+/* parent container (must be positioned relatively) */
+.app-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+}
+
+.home-container, .news-container, .travel-container, .timeline-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+span {
+  cursor: pointer;
+}
+
+.left.page-enter {
+  animation: slideInLeft 0.5s forwards;
+}
+.left.page-exit {
+  animation: slideOutLeft 0.5s forwards;
+}
+
+.right.page-enter {
+  animation: slideInRight 0.5s forwards;
+}
+
+.right.page-exit {
+  animation: slideOutRight 0.5s forwards;
+} 

@@ -5,20 +5,105 @@ import Home from './Components/Home/Home'
 import NewsAggregator from './Components/NewsAggregator/NewsAggregator'
 import FlightFinder from './Components/FlightFinder/FlightFinder'
 import Timeline from './Components/Timeline/Timeline'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Router, Route, Switch} from 'react-router-dom'
+import {TransitionGroup, CSSTransition} from 'react-transition-group'
+import history from './history'
 
-function App() {
-  return (
-    <div className='app-wrapper'>
-      <Header />
-      <BrowserRouter>
-        <Route exact path='/' component={Home} />
-        <Route path='/news' component={NewsAggregator} />
-        <Route path='/travel' component={FlightFinder} />
-        <Route path='/timeline' component={Timeline} />
-      </BrowserRouter>
-    </div>
-  )
+class App extends React.Component {
+
+  state = {
+    currentPage: '',
+    newsPageDirection: '',
+    travelPageDirection: '',
+    timelinePageDirection: '',
+    nextPage: '',
+  }
+
+  updateCurrentPage = (page) => {
+    this.setState(() => ({currentPage: page}))
+  }
+
+  updateNextPage = (nextPage) => {
+    this.setState(() => ({nextPage: nextPage}), () => this.updatePageDirections(nextPage))
+  }
+
+  updatePageDirections = (nextPage) => {
+
+    let newsPageDirection, travelPageDirection, timelinePageDirection
+
+    if (nextPage === 'home') {
+      newsPageDirection = undefined
+      travelPageDirection = undefined
+      timelinePageDirection = undefined
+      nextPage = '/'
+
+    } else if (this.state.currentPage === 'news' && nextPage === 'travel') {
+      newsPageDirection = 'left'
+      travelPageDirection = 'right'
+      timelinePageDirection = undefined
+    } else if (this.state.currentPage === 'news' && nextPage === 'timeline') {
+      newsPageDirection = 'right'
+      travelPageDirection = undefined
+      timelinePageDirection = 'left'
+
+    } else if (this.state.currentPage === 'travel' && nextPage === 'timeline') {
+      newsPageDirection = undefined
+      travelPageDirection = 'left'
+      timelinePageDirection = 'right'
+    } else if (this.state.currentPage === 'travel' && nextPage === 'news') {
+      newsPageDirection = 'left'
+      travelPageDirection = 'right'
+      timelinePageDirection = undefined
+
+    } else if (this.state.currentPage === 'timeline' && nextPage === 'news') {
+      newsPageDirection = 'right'
+      travelPageDirection = undefined
+      timelinePageDirection = 'left'
+    } else if (this.state.currentPage === 'timeline' && nextPage === 'travel') {
+      newsPageDirection = undefined
+      travelPageDirection = 'left'
+      timelinePageDirection = 'right'
+    }
+    this.setState(() => ({newsPageDirection, travelPageDirection, timelinePageDirection}), () => history.push(nextPage))
+  }
+
+  render() {
+
+
+    return (
+      <Router history={history}>
+
+        <Route render={({location}) => {
+          return (
+            <div>
+              {/* <Header updateNextPage={this.updateNextPage} /> */}
+
+              <div className='page-container'>
+                <TransitionGroup component={null}>
+                  <CSSTransition
+                    timeout={500}
+                    classNames={'page'}
+                    key={location.key}
+                  >
+                    <Switch location={location}>
+                      <Route exact path="/" render={(props) => <Home updateCurrentPage={this.updateCurrentPage} />} />
+                      <Route exact path="/news" render={(props) => <NewsAggregator updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} direction={this.state.newsPageDirection} />} />
+                      <Route exact path="/travel" render={(props) => <FlightFinder updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} direction={this.state.travelPageDirection} />} />
+                      <Route exact path="/timeline" render={(props) => <Timeline updateCurrentPage={this.updateCurrentPage} updateNextPage={this.updateNextPage} direction={this.state.timelinePageDirection} />} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              </div>
+            </div>
+          )
+        }} />
+
+      </Router>
+
+    )
+
+  }
+
 }
 
 export default App

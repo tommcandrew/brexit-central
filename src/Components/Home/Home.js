@@ -1,17 +1,31 @@
 import React from 'react'
+import Header from '../Header/Header'
 import Countdown from '../Countdown/Countdown'
 import MainNav from '../MainNav/MainNav'
 import './Home.css'
 
-export default function Home() {
-    return (
+class Home extends React.Component {
 
-        <div>
+    componentDidMount = () => {
+        this.props.updateCurrentPage('home')
+    }
 
-            <Countdown />
-            <MainNav />
+    render() {
 
-        </div>
+        return (
 
-    )
+            <div className='home-container'>
+
+                <Header updateCurrentPage={this.props.updateCurrentPage} />
+                <Countdown />
+                <MainNav />
+
+            </div>
+
+        )
+
+    }
+
 }
+
+export default Home

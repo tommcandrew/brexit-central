@@ -1,113 +1,80 @@
-.app-wrapper {
-    background: white;
-    min-height: 90vh;
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 5vh;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    box-shadow: 0px 0px 8px 0 rgba(0, 0, 128, 0.603);
+.page-container {
     position: relative;
 }
 
-.router-link {
-  display: inline-block;
-  font-family:'Work Sans';
-  text-decoration: none;
-  color: rgb(44, 38, 38);
-  text-align: center;
-  line-height: 5rem;
-  margin-top: 50px;
-  font-size: 4.5rem;
-  font-weight: 100;
-  letter-spacing: .3rem;
-  text-transform: uppercase;
+@keyframes slideInLeft {
+  from {
+    transform: translate(-100%);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translate(-100%);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translate(100%);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+
+@keyframes slideOutRight {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translate(100%);
+  }
+} 
+
+/* parent container (must be positioned relatively) */
+.app-wrapper {
   position: relative;
-  text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
-  -webkit-background-clip: text;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
 }
 
-@media screen and (max-width:768px) {
-  .router-link {
-    font-size:2.5rem;
-    letter-spacing:.5rem;
-    line-height: 2.5rem;
-  }
+.home-container, .news-container, .travel-container, .timeline-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
 }
 
-.flags-container {
-  margin-bottom:-1rem;
-}
-
-@media screen and (max-width:768px) {
-  .flags-container {
-    margin-bottom: 0;
-  }
-}
-
-.flags {
-  font-weight: 800;
-  font-size: 5rem;
-  filter: drop-shadow(3px 0px 5px rgba(0,0,0,.6))drop-shadow(2px 2px 2px #ccc);
-  letter-spacing:.5rem;
-  line-height: 5rem;
-}
-
-@media screen and (max-width:768px) {
-  .flags {
-    letter-spacing:0;
-    font-size:4rem;
-  }
-}
-
-.brit-flag {
-  background: url(./assets/half-uk.png);
-  display:inline-block;
-  transition:transform .3s ease-in-out;
-}
-
-.brit-flag:hover {
-  transform: translate(10px 10px)
-}
-
-.euro-flag {
-  background: url(./assets/half-eu.png);
-}
-
-.brit-flag, .euro-flag {
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.links {
-  display:flex;
-  justify-content: space-between;
-}
-
-.right, .left {
-  text-decoration: none;
-  color: rgb(44, 38, 38);
-  font-size: 20px;
+span {
   cursor: pointer;
-  margin:15px 0;
-  font-weight: bolder;
-}
-.left:hover{
-  opacity: 0.5;
 }
 
-.right:hover{
-  opacity: 0.5;
+.left.page-enter {
+  animation: slideInLeft 0.5s forwards;
+}
+.left.page-exit {
+  animation: slideOutLeft 0.5s forwards;
 }
 
-@media (max-width: 700px) {
-  .left, .right{
-    font-size: 14px;
-  }
+.right.page-enter {
+  animation: slideInRight 0.5s forwards;
 }
+
+.right.page-exit {
+  animation: slideOutRight 0.5s forwards;
+} 

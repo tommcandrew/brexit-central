@@ -1,6 +1,5 @@
 import React from 'react'
 import './MainNav.css'
-import {Link} from 'react-router-dom'
 import boris from '../../assets/boris-square.jpg'
 import demo from '../../assets/demo-square.jpg'
 import junker from '../../assets/junker-square.jpg'
@@ -11,10 +10,10 @@ import facepaint from '../../assets/facepaint-square.jpg'
 import corbyn from '../../assets/corbyn-square.jpg'
 import may from '../../assets/may-square.jpg'
 
-const MainNav = () => (
+const MainNav = (props) => (
 
     <div className="cards-container">
-        <Link to="/news" className="card-container news-container">
+        <span onClick={() => props.updateNextPage('news')} className="card-container news-container">
             <div className="img-container">
                 <img id="boris" src={boris} alt="" />
                 <img id="demo" src={demo} alt="" />
@@ -24,9 +23,9 @@ const MainNav = () => (
                 <h2>NEWS</h2>
                 <p>Get the latest Brexit news.</p>
             </div>
-        </Link>
+        </span>
 
-        <Link to="/travel" className="card-container travel-container">
+        <span onClick={() => props.updateNextPage('travel')} className="card-container travel-container">
             <div className="img-container">
                 <img id="map" src={map} alt="" />
                 <img id="airport" src={airport} alt="" />
@@ -36,9 +35,9 @@ const MainNav = () => (
                 <h2>TRAVEL</h2>
                 <p>Buy a ticket out of here!</p>
             </div>
-        </Link>
+        </span>
 
-        <Link to="/timeline" className="card-container timeline-container">
+        <span onClick={() => props.updateNextPage('timeline')} className="card-container timeline-container">
             <div className="img-container">
                 <img id="facepaint" src={facepaint} alt="" />
                 <img id="corbyn" src={corbyn} alt="" />
@@ -48,7 +47,7 @@ const MainNav = () => (
                 <h2>TIMELINE</h2>
                 <p>Refresh your memory of Brexit history.</p>
             </div>
-        </Link>
+        </span>
     </div>
 
 )

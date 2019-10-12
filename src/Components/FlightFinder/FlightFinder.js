@@ -2,27 +2,27 @@ import React from 'react'
 import './FlightFinder.css'
 import axios from 'axios'
 import Map from '../Map/Map'
-import { Link } from 'react-router-dom'
+import Arrows from '../Arrows/Arrows'
 
 const GMAPS_TOKEN = process.env.REACT_APP_GMAPS_TOKEN
 const RAPIDAPI_TOKEN = process.env.REACT_APP_RAPIDAPI_TOKEN
 class FlightFinder extends React.Component {
   static defaultProps = {
     englishAirports: [
-      { name: 'Aberdeen', code: 'ABZ' },
-      { name: 'Belfast', code: 'BFS' },
-      { name: 'Birmingham', code: 'BHX' },
-      { name: 'Bristol', code: 'BRS' },
-      { name: 'Cardiff', code: 'CWL' },
-      { name: 'Edinburgh', code: 'EDI' },
-      { name: 'Exeter', code: 'EXT' },
-      { name: 'Glasgow', code: 'GLA' },
-      { name: 'Leeds Bradford', code: 'LBA' },
-      { name: 'Liverpool', code: 'LPL' },
-      { name: 'London', code: 'LOND' },
-      { name: 'Manchester', code: 'MAN' },
-      { name: 'Newcastle', code: 'NCL' },
-      { name: 'Southampton', code: 'SOU' }
+      {name: 'Aberdeen', code: 'ABZ'},
+      {name: 'Belfast', code: 'BFS'},
+      {name: 'Birmingham', code: 'BHX'},
+      {name: 'Bristol', code: 'BRS'},
+      {name: 'Cardiff', code: 'CWL'},
+      {name: 'Edinburgh', code: 'EDI'},
+      {name: 'Exeter', code: 'EXT'},
+      {name: 'Glasgow', code: 'GLA'},
+      {name: 'Leeds Bradford', code: 'LBA'},
+      {name: 'Liverpool', code: 'LPL'},
+      {name: 'London', code: 'LOND'},
+      {name: 'Manchester', code: 'MAN'},
+      {name: 'Newcastle', code: 'NCL'},
+      {name: 'Southampton', code: 'SOU'}
     ],
     mapCoord: {
       center: {
@@ -32,7 +32,7 @@ class FlightFinder extends React.Component {
       zoom: 4
     }
   }
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       quotes: [],
@@ -50,20 +50,24 @@ class FlightFinder extends React.Component {
     this.selectCountry = this.selectCountry.bind(this)
   }
 
-  handleChange (e) {
-    this.setState({ selectValue: e.target.value, selectedCountry: '' }, () => {
+  componentDidMount = () => {
+    this.props.updateCurrentPage('travel')
+  }
+
+  handleChange(e) {
+    this.setState({selectValue: e.target.value, selectedCountry: ''}, () => {
       this.getQuotesAndPlaces()
     })
   }
 
-  getQuotesAndPlaces () {
+  getQuotesAndPlaces() {
     const chosenOriginPlace = this.state.selectValue
 
     axios
       .get(
         'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/' +
-          chosenOriginPlace +
-          '-sky/anywhere/2019-10-31?inboundpartialdate=2019-12-01',
+        chosenOriginPlace +
+        '-sky/anywhere/2019-10-31?inboundpartialdate=2019-12-01',
         {
           method: 'GET',
           headers: {
@@ -74,12 +78,12 @@ class FlightFinder extends React.Component {
         }
       )
       .then(res => {
-        this.setState({ quotes: res.data.Quotes, places: res.data.Places })
+        this.setState({quotes: res.data.Quotes, places: res.data.Places})
         this.getResults()
       })
   }
 
-  getResults () {
+  getResults() {
     const quotes = this.state.quotes
     const places = this.state.places
     const quotesDestionationIdPrice = []
@@ -133,7 +137,7 @@ class FlightFinder extends React.Component {
           r.country.indexOf('United Kingdom') < 0 &&
           r.country.indexOf('Ireland') < 0
       )
-      this.setState({ quotes: results }, this.getCountriesData)
+      this.setState({quotes: results}, this.getCountriesData)
     } else {
       this.getCheapest(
         quotesDestionationIdPrice,
@@ -143,7 +147,7 @@ class FlightFinder extends React.Component {
     }
   }
 
-  getCheapest (quotesDestionationIdPrice, placesId, placesIdCountryAirport) {
+  getCheapest(quotesDestionationIdPrice, placesId, placesIdCountryAirport) {
     let results = []
     const sorted = quotesDestionationIdPrice.sort(function (a, b) {
       return a[1] - b[1]
@@ -171,16 +175,16 @@ class FlightFinder extends React.Component {
         r.country.indexOf('Ireland') < 0
     )
 
-    this.setState({ quotes: results }, this.getCountriesData)
+    this.setState({quotes: results}, this.getCountriesData)
   }
 
-  getCountriesData () {
+  getCountriesData() {
     const quotes = this.state.quotes
     const promises = quotes.map(quote => {
-      let { price, airport, skyscannerCode } = quote
+      let {price, airport, skyscannerCode} = quote
       const baseUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${
         quote.country
-      }&key=${GMAPS_TOKEN}`
+        }&key=${GMAPS_TOKEN}`
       return axios.get(baseUrl).then(res => {
         const country = res.data.results[0]
         return {
@@ -203,35 +207,28 @@ class FlightFinder extends React.Component {
     })
   }
 
-  selectCountry (name) {
+  selectCountry(name) {
     const countries = this.state.countriesData
     const selectedCountry = countries.filter(c => c.name === name)[0]
-    this.setState({ selectedCountry: selectedCountry }, this.scrollToMyRef)
+    this.setState({selectedCountry: selectedCountry}, this.scrollToMyRef)
   }
 
-  scrollToMyRef () {
+  scrollToMyRef() {
     window.scrollTo(0, this.myRef.offsetTop)
   }
 
-  render () {
+  render() {
     const englishAirports = this.props.englishAirports.map(airport => (
       <option key={airport.code} value={airport.code}>
         {airport.name}
       </option>
     ))
     return (
-      <div className='FlightFinder'>
-        <div className='links'>
-          <Link className='left' to='/news'>
-            &lt;&nbsp;News
-          </Link>
-          <Link className='right' to='/timeline'>
-            Timeline&nbsp;&gt;
-          </Link>
-        </div>
+      <div className={'Flightfinder travel-container ' + this.props.direction}>
+        <Arrows left='news' right='timeline' updateNextPage={this.props.updateNextPage} />
         <div>
           <div className='starting-selection'>
-            <span style={{ fontSize: '1.5rem' }}>Select an airport: </span>
+            <span style={{fontSize: '1.5rem'}}>Select an airport: </span>
             <select id='dropdown' onChange={this.handleChange}>
               <option value='Select' defaultValue>
                 Select
@@ -251,18 +248,18 @@ class FlightFinder extends React.Component {
               <h4 class='result--subtitle'>
                 {`You are ready to start your new life in ${
                   this.state.selectedCountry.name
-                }.`}
+                  }.`}
               </h4>
               <p className='result--copy'>
                 {`The cheapest price we found for this country is to ${
                   this.state.selectedCountry.airport
-                }, `}
+                  }, `}
                 finalize your brexit process on the{' '}
                 <a
                   className='result--link'
                   href={`https://www.skyscanner.net/transport/flights/${
                     this.state.selectValue
-                  }/${this.state.selectedCountry.code}/191031/`}
+                    }/${this.state.selectedCountry.code}/191031/`}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
@@ -272,8 +269,8 @@ class FlightFinder extends React.Component {
               </p>
             </div>
           ) : (
-            ''
-          )}
+              ''
+            )}
         </div>
       </div>
     )

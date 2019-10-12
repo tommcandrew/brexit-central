@@ -1,24 +1,22 @@
+#countdown-container {
+    padding-top: 30px;
+}
+
 #countdown-display {
     font-size: 4rem;
     font-weight: bold;
     font-family: 'Lato', sans-serif;
     width: 40%;
-    border-radius: 10px;
     color: rgb(44, 38, 38);
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: space-around;
-    margin-top: 80px;
 }
 
 .clock-section {
     min-height: 10vh;
-    background-color: #d4020d;
-    color:white;
-    padding: 20px 20px;
     margin: 0 15px;
-    border-radius: 50%;
 }
 
 .label {
@@ -26,7 +24,6 @@
     padding-bottom: 0.5rem;
     text-align: center;
     color: #d4020d;
-    margin-top: 15px;
     font-weight: bolder;
     text-shadow: 1px 1px yellow;
 }

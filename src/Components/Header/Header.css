@@ -1,0 +1,46 @@
+
+.flags-container {
+    margin-bottom:-1rem;
+  }
+  
+  @media screen and (max-width:768px) {
+    .flags-container {
+      margin-bottom: 0;
+    }
+  }
+  
+  .flags {
+    font-weight: 800;
+    font-size: 5rem;
+    filter: drop-shadow(3px 0px 5px rgba(0,0,0,.6))drop-shadow(2px 2px 2px #ccc);
+    letter-spacing:.5rem;
+    line-height: 5rem;
+  }
+  
+  @media screen and (max-width:768px) {
+    .flags {
+      letter-spacing:0;
+      font-size:4rem;
+    }
+  }
+  
+  .brit-flag {
+    background: url(../../assets/half-uk.png);
+    display:inline-block;
+    transition:transform .3s ease-in-out;
+  }
+  
+  .brit-flag:hover {
+    transform: translate(10px 10px)
+  }
+  
+  .euro-flag {
+    background: url(../../assets/half-eu.png);
+  }
+  
+  .brit-flag, .euro-flag {
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

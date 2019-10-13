@@ -181,7 +181,9 @@ class FlightFinder extends React.Component {
       if (index !== -1) {
         results.push({
           country: placesIdCountryAirport[index][1],
-          price: cheapest[i][1]
+          airport: placesIdCountryAirport[index][2],
+          price: cheapest[i][1],
+          skyscannerCode: placesIdCountryAirport[index][3]
         })
       }
     }
@@ -204,6 +206,7 @@ class FlightFinder extends React.Component {
       }&key=${GMAPS_TOKEN}`
       return axios.get(baseUrl).then(res => {
         const country = res.data.results[0]
+
         return {
           name: country.formatted_address,
           lat: country.geometry.location.lat,
@@ -283,7 +286,6 @@ class FlightFinder extends React.Component {
           />
           {this.state.selectedCountry ? (
             <div className='cityResult' ref={ref => (this.myRef = ref)}>
-              <h2 className='result--title'>Great Choice!</h2>
               <h4 className='result--subtitle'>
                 {this.getRandomMessage(this.state.selectedCountry.name)}!
               </h4>

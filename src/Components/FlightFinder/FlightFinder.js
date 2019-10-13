@@ -40,7 +40,8 @@ class FlightFinder extends React.Component {
       countries: [],
       selectValue: '',
       selectedCountry: '',
-      ref: null
+      ref: null,
+      rateExceeded: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -80,6 +81,9 @@ class FlightFinder extends React.Component {
       .then(res => {
         this.setState({ quotes: res.data.Quotes, places: res.data.Places })
         this.getResults()
+      })
+      .catch(e => {
+        this.setState({ rateExceeded: true })
       })
   }
 
@@ -223,6 +227,9 @@ class FlightFinder extends React.Component {
         {airport.name}
       </option>
     ))
+    if (this.state.rateExceeded) {
+      return <ApiError />
+    }
     return (
       <div className={'Flightfinder travel-container ' + this.props.direction}>
         <Arrows

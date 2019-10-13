@@ -302,6 +302,9 @@ img {
     .event-container--left .event-container__content { 
         margin-right: 20px;
     }
+    .event-container--right .event-container__content { 
+        margin-right: 20px;
+    }
     .event-container__para {
         font-size: 0.9em;
     }

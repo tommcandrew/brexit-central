@@ -24,6 +24,19 @@ class FlightFinder extends React.Component {
       { name: 'Newcastle', code: 'NCL' },
       { name: 'Southampton', code: 'SOU' }
     ],
+    resultsMessages: [
+      'In your face, Brexit! I go to ',
+      'And the prize for the most welcoming country goes to...',
+      'Deep inside, you always wanted to be in ',
+      'Looks like we have a winner, ',
+      'Prepare your trolley, you are going to ',
+      'They say it never rains in ',
+      'For a life full of colors: ',
+      'You will love thisCountry, and thisCountry will love you too',
+      'You will always be welcome in ',
+      'There is a whole lot more than fish & chips. Welcome to ',
+      'They say you never get bored in '
+    ],
     mapCoord: {
       center: {
         lat: 50.5,
@@ -221,6 +234,16 @@ class FlightFinder extends React.Component {
     window.scrollTo(0, this.myRef.offsetTop)
   }
 
+  getRandomMessage (country) {
+    let messages = this.props.resultsMessages
+    let randomIndex = Math.floor(Math.random() * messages.length)
+    const regex = new RegExp('thisCountry', 'g')
+    let message = messages[randomIndex]
+    return message.match(regex)
+      ? message.replace(regex, country)
+      : `${message} ${country}`
+  }
+
   render () {
     const englishAirports = this.props.englishAirports.map(airport => (
       <option key={airport.code} value={airport.code}>
@@ -262,9 +285,7 @@ class FlightFinder extends React.Component {
             <div className='cityResult' ref={ref => (this.myRef = ref)}>
               <h2 className='result--title'>Great Choice!</h2>
               <h4 className='result--subtitle'>
-                {`You are ready to start your new life in ${
-                  this.state.selectedCountry.name
-                }.`}
+                {this.getRandomMessage(this.state.selectedCountry.name)}!
               </h4>
               <p className='result--copy'>
                 {`The cheapest price we found for this country is to ${

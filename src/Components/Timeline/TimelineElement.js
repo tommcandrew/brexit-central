@@ -1,4 +1,5 @@
 import React from 'react'
+import './Timeline.css'
 
 export default function TimelineElement({side, mediaType, mediaTag, date, text}) {
 
@@ -12,7 +13,7 @@ export default function TimelineElement({side, mediaType, mediaTag, date, text})
                     {mediaTag}
                 </div>
                 <h2 className="event-container__heading">{date}</h2>
-                <p>{text}</p>
+                <p className="event-container__para">{text}</p>
             </div>
         </div>
 

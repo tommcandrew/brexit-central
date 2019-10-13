@@ -7,7 +7,6 @@
     font-weight: bold;
     font-family: 'Lato', sans-serif;
     width: 40%;
-    color: rgb(44, 38, 38);
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -26,32 +25,16 @@
     color: #d4020d;
     font-weight: bolder;
     text-shadow: 1px 1px yellow;
+    max-width: 100%;
 }
 
 @media (max-width: 850px) {
     #countdown-display {
-        flex-direction: column;
-        width: 45%;
-        font-size: 2.5rem;
+        width: 60%;
+        font-size: 5.5rem;
     }
     .label {
-        font-size: 14px;
-    }
-
-    .clock-section {
-        padding: 10px 10px;
-        margin: 0 5px;
-    }
-}
-
-@media (max-width: 600px) {
-    #countdown-display {
-        flex-direction: column;
-        width: 45%;
-        font-size: 1.4rem;
-    }
-    .label {
-        font-size: 14px;
+        font-size: 1.5rem;
     }
 
     .clock-section {

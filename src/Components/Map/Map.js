@@ -13,6 +13,7 @@ class Map extends Component {
 
   createMapOptions (maps) {
     return {
+      disableDoubleClickZoom: true,
       zoomControl: false,
       mapTypeControl: false,
       scaleControl: false,

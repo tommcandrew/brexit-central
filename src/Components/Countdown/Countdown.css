@@ -42,3 +42,15 @@
         margin: 0 5px;
     }
 }
+
+
+@media (max-width: 450px) {
+    #countdown-display {
+        width: 100%;
+        font-size: 2.8rem;
+    }
+    .label {
+        font-size: 0.8rem;
+        padding-bottom: 0;
+    }
+}

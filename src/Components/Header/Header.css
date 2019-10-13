@@ -4,7 +4,7 @@
   padding: 5px;
 }
 
-.router-link {
+.home-link {
   display: inline-block;
   font-family:'Work Sans';
   text-decoration: none;
@@ -25,26 +25,11 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width:768px) {
-  .router-link {
-    font-size:2.5rem;
-    letter-spacing:.5rem;
-    line-height: 2.5rem;
-    flex-direction: column;
-  }
-}
 
 .flags-container {
-    margin-bottom:-1rem;
     white-space: nowrap;
   }
-  
-  @media screen and (max-width:768px) {
-    .flags-container {
-      margin-bottom: 0;
-    }
-  }
-  
+
   .flags {
     font-weight: 800;
     font-size: 5rem;
@@ -53,12 +38,6 @@
     line-height: 5rem;
   }
   
-  @media screen and (max-width:768px) {
-    .flags {
-      letter-spacing:0;
-      font-size:4rem;
-    }
-  }
   
   .brit-flag {
     background: url(../../assets/half-uk.png);
@@ -83,4 +62,21 @@
 
 .planner {
   color: white;
+}
+
+@media (max-width: 850px) {
+  .header-container {
+    height: 30vh;
+    padding-top: 15px;
+  }
+  .home-link {
+    font-size: 6rem;
+    letter-spacing:.5rem;
+    line-height: 2.5rem;
+    flex-direction: column;
+  }
+  .flags {
+    font-size: 8rem;
+    padding-bottom: 35px;
+  }
 }

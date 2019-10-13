@@ -70,6 +70,7 @@
 
 .flags-container {
     white-space: nowrap;
+    cursor: pointer;
   }
 
   .flags {
@@ -79,7 +80,6 @@
     letter-spacing:.5rem;
     line-height: 5rem;
   }
-  
   
   .brit-flag {
     background: url(../../assets/half-uk.png);
@@ -101,6 +101,12 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+.planner {
+  color: white;
+  cursor: pointer;
+
+}
 
 @media (max-width: 850px) {
   .header-container {

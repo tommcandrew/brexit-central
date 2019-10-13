@@ -60,10 +60,6 @@
   text-align: center;
 }
 
-span {
-  cursor: pointer;
-}
-
 .left.page-enter {
   animation: slideInLeft 0.5s forwards;
 }

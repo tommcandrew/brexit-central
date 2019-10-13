@@ -103,9 +103,7 @@
   }
 
 .planner {
-  color: white;
   cursor: pointer;
-
 }
 
 @media (max-width: 850px) {

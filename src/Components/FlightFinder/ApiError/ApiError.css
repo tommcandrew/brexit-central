@@ -1,0 +1,14 @@
+.ApiError {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    color: white;
+}
+
+.ApiError__message {
+    font-size:1.5rem;
+}

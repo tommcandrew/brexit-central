@@ -254,7 +254,7 @@ class FlightFinder extends React.Component {
           {this.state.selectedCountry ? (
             <div className='cityResult' ref={ref => (this.myRef = ref)}>
               <h2 className='result--title'>Great Choice!</h2>
-              <h4 class='result--subtitle'>
+              <h4 className='result--subtitle'>
                 {`You are ready to start your new life in ${
                   this.state.selectedCountry.name
                 }.`}

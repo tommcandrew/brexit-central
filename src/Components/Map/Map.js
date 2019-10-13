@@ -4,6 +4,8 @@ import Marker from '../Map/Marker/Marker'
 // import axios from 'axios'
 import './Map.css'
 
+const GMAPS_TOKEN = process.env.REACT_APP_GMAPS_TOKEN
+
 class Map extends Component {
   constructor (props) {
     super(props)
@@ -58,7 +60,7 @@ class Map extends Component {
       <div className='Map'>
         <GoogleMapReact
           options={this.createMapOptions}
-          bootstrapURLKeys={{ key: 'AIzaSyBgQWwReU8XuTMbmvGgbMBkilrVnJm9dzM' }}
+          bootstrapURLKeys={{ key: GMAPS_TOKEN }}
           center={center}
           zoom={zoom}
         >

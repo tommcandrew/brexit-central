@@ -230,7 +230,7 @@ class FlightFinder extends React.Component {
           right='timeline'
           updateNextPage={this.props.updateNextPage}
         />
-        <p>
+        <div>
           <p className='Flightfinder__setup'>
             We already set up for you all the available flights under £100 to
             have a happy depart right on Brexit day. Just choose your preferred
@@ -280,7 +280,7 @@ class FlightFinder extends React.Component {
           ) : (
             ''
           )}
-        </p>
+        </div>
       </div>
     )
   }

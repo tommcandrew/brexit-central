@@ -1,9 +1,27 @@
+.Flightfinder__setup {
+    font-size:1.5rem;
+    line-height: 2rem;
+    padding-top: 4rem;
+    width:80vw;
+    margin: auto;
+}
+
 .starting-selection {
     display:flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
     padding-top: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .starting-selection {
+        flex-direction:column;
+    }
+
+    .starting-selection span {
+        padding-bottom: .5rem;
+    }
 }
 
 #dropdown {

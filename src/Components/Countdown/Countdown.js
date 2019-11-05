@@ -15,7 +15,7 @@ class Countdown extends React.Component {
         this.timer = setInterval(() => {
 
             let now = new Date()
-            let brexit = new Date(2019, 9, 31, 23)
+            let brexit = new Date(2019, 12, 31, 23)
             let msNow = now.getTime()
             let msBrexit = brexit.getTime()
             let msTillBrexit = msBrexit - msNow

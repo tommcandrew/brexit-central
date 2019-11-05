@@ -81,7 +81,7 @@ class FlightFinder extends React.Component {
       .get(
         'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/' +
           chosenOriginPlace +
-          '-sky/anywhere/2019-10-31',
+          '-sky/anywhere/2020-01-31',
         {
           method: 'GET',
           headers: {

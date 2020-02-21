@@ -4,9 +4,8 @@ import axios from "axios";
 import Map from "../Map/Map";
 import Arrows from "../Arrows/Arrows";
 import ApiError from "./ApiError/ApiError";
-const d = new Date();
-const GMAPS_TOKEN = process.env.GMAPS_TOKEN;
-const RAPIDAPI_TOKEN = process.env.RAPIDAPI_TOKEN;
+const GMAPS_TOKEN = process.env.REACT_APP_GMAPS_TOKEN;
+const RAPIDAPI_TOKEN = process.env.REACT_APP_RAPIDAPI_TOKEN;
 class FlightFinder extends React.Component {
   static defaultProps = {
     englishAirports: [

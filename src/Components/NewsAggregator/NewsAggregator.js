@@ -4,7 +4,7 @@ import "./NewsAggregator.css";
 import uuid from "uuid/v4";
 import Arrows from "../Arrows/Arrows";
 
-const NEWSAPI_TOKEN = process.env.NEWSAPI_TOKEN;
+const NEWSAPI_TOKEN = process.env.REACT_APP_NEWSAPI_TOKEN;
 
 const TODAY = new Date();
 class NewsAggregator extends Component {

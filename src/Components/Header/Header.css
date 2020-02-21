@@ -1,56 +1,58 @@
-
 .header-container {
-  padding: .5rem;
-  display:flex;
-  background: rgba(235, 237, 255,0.9);
+  padding: 0.5rem;
+  display: flex;
+  background: rgba(235, 237, 255, 0.9);
   position: relative;
 }
 
 .header-container:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: calc(100% + 3px);
   width: 100%;
-  background: linear-gradient(60deg, #F9FCFB,#F61802, #1D4199,  #F9CD04, #1C309A, #F9FCFB);
+  background: linear-gradient(
+    60deg,
+    #f9fcfb,
+    #f61802,
+    #1d4199,
+    #f9cd04,
+    #1c309a,
+    #f9fcfb
+  );
   z-index: -1;
   -webkit-animation: animatedgradient 3s ease alternate infinite;
-          animation: animatedgradient 3s ease alternate infinite;
+  animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
 }
 
-
 @-webkit-keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-
 
 @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-
-
-
 .home-link {
-  font-family:'Work Sans';
+  font-family: "Work Sans";
   text-decoration: none;
   color: rgb(44, 38, 38);
   text-align: center;
@@ -58,10 +60,10 @@
   margin-top: 50px;
   font-size: 4.5rem;
   font-weight: 100;
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
   text-transform: uppercase;
   position: relative;
-  text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
   -webkit-background-clip: text;
   display: inline-flex;
   justify-content: center;
@@ -69,38 +71,40 @@
 }
 
 .flags-container {
-    white-space: nowrap;
-    cursor: pointer;
-  }
+  white-space: nowrap;
+  cursor: pointer;
+}
 
-  .flags {
-    font-weight: 800;
-    font-size: 5rem;
-    filter: drop-shadow(3px 0px 5px rgba(0,0,0,.6))drop-shadow(2px 2px 2px #ccc);
-    letter-spacing:.5rem;
-    line-height: 5rem;
-  }
-  
-  .brit-flag {
-    background: url(../../assets/half-uk.png);
-    display:inline-block;
-    transition:transform .3s ease-in-out;
-  }
-  
-  .brit-flag:hover {
-    transform: translate(10px 10px)
-  }
-  
-  .euro-flag {
-    background: url(../../assets/half-eu.png);
-  }
-  
-  .brit-flag, .euro-flag {
-    background-size:100% 100%;
-    background-repeat:no-repeat;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.flags {
+  font-weight: 800;
+  font-size: 5rem;
+  filter: drop-shadow(3px 0px 5px rgba(0, 0, 0, 0.6))
+    drop-shadow(2px 2px 2px #ccc);
+  letter-spacing: 0.5rem;
+  line-height: 5rem;
+}
+
+.brit-flag {
+  background: url(../../assets/half-uk.png);
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.brit-flag:hover {
+  transform: translate(10px 10px);
+}
+
+.euro-flag {
+  background: url(../../assets/half-eu.png);
+}
+
+.brit-flag,
+.euro-flag {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .planner {
   cursor: pointer;
@@ -112,13 +116,13 @@
     padding-top: 15px;
   }
   .home-link {
-    font-size: 6rem;
-    letter-spacing:.5rem;
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
     line-height: 2.5rem;
     flex-direction: column;
   }
   .flags {
-    font-size: 8rem;
+    font-size: 6rem;
     padding-bottom: 35px;
   }
 }
@@ -130,7 +134,7 @@
   }
   .home-link {
     font-size: 3.5rem;
-    letter-spacing:.5rem;
+    letter-spacing: 0.5rem;
     line-height: 2.5rem;
     flex-direction: column;
   }

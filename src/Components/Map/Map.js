@@ -1,19 +1,19 @@
-import React, { Component } from 'react'
-import GoogleMapReact from 'google-map-react'
-import Marker from '../Map/Marker/Marker'
+import React, { Component } from "react";
+import GoogleMapReact from "google-map-react";
+import Marker from "../Map/Marker/Marker";
 // import axios from 'axios'
-import './Map.css'
+import "./Map.css";
 
-const GMAPS_TOKEN = process.env.REACT_APP_GMAPS_TOKEN
+const GMAPS_TOKEN = "AIzaSyAc--UmAu1JG3TL-aISZ7zq6oL3ZxY_amc";
 
 class Map extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {}
-    this.ref = null
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.ref = null;
   }
 
-  createMapOptions (maps) {
+  createMapOptions(maps) {
     return {
       disableDoubleClickZoom: true,
       zoomControl: false,
@@ -22,20 +22,20 @@ class Map extends Component {
       streetViewControl: false,
       rotateControl: false,
       fullscreenControl: false
-    }
+    };
   }
 
-  selectCity (name) {
+  selectCity(name) {
     this.setState(
       {
         selectedCity: name
       },
       this.scrollToMyRef
-    )
+    );
   }
 
-  render () {
-    let markers = []
+  render() {
+    let markers = [];
     if (this.props.coordinates && this.props.countriesData) {
       markers = this.props.countriesData.map(c => {
         return (
@@ -46,18 +46,18 @@ class Map extends Component {
             name={c.name}
             price={c.minPrice}
             selectCountry={this.props.selectCountry}
-            selector='country'
+            selector="country"
           />
-        )
-      })
+        );
+      });
     } else {
-      markers = ''
+      markers = "";
     }
 
-    const { center, zoom } = this.props.coordinates
+    const { center, zoom } = this.props.coordinates;
 
     return (
-      <div className='Map'>
+      <div className="Map">
         <GoogleMapReact
           options={this.createMapOptions}
           bootstrapURLKeys={{ key: GMAPS_TOKEN }}
@@ -67,8 +67,8 @@ class Map extends Component {
           {markers}
         </GoogleMapReact>
       </div>
-    )
+    );
   }
 }
 
-export default Map
+export default Map;

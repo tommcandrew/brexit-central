@@ -280,16 +280,18 @@ class FlightFinder extends React.Component {
             selectCountry={this.selectCountry}
             countriesData={this.state.countriesData}
           />
-          {this.state.selectedCountry ? (
-            <div className="cityResult" ref={ref => (this.myRef = ref)}>
-              <h4 className="result--subtitle">
-                {/* {this.getRandomMessage(this.state.selectedCountry.name)}! */}
-              </h4>
+          <div className="cityResult" ref={ref => (this.myRef = ref)}>
+            {/* {this.state.selectedCountry ? ( */}
+            <>
+              {/* <h4 className="result--subtitle">
+                {this.getRandomMessage(this.state.selectedCountry.name)}!
+              </h4> */}
               <p className="result--copy">
                 Ready to go? Make your purchase on the
                 <a
                   className="result--link"
-                  href={`https://www.skyscanner.net/transport/flights/${this.state.selectValue}/${this.state.selectedCountry.code}/191031/`}
+                  // href={`https://www.skyscanner.net/transport/flights/${this.state.selectValue}/${this.state.selectedCountry.code}/191031/`}
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -297,10 +299,11 @@ class FlightFinder extends React.Component {
                 </a>
                 website and say goodbye to Britain!
               </p>
-            </div>
-          ) : (
-            ""
-          )}
+            </>
+            {/* ) : (
+              ""
+            )} */}
+          </div>
         </div>
       </div>
     );
